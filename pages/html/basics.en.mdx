@@ -1,0 +1,119 @@
+import { Callout } from 'nextra-theme-docs'
+ 
+# Basics
+
+## Your First HTML Document
+
+Create a new folder and open it in VSCode. Then create a new file called `index.html`.
+
+First, add the required `<!DOCTYPE html>{:html}` declaration to tell the browser that this is an HTML5 document.
+
+```html copy filename="index.html"
+<!DOCTYPE html>
+```
+
+<Callout type="info" emoji="ℹ️">
+  HTML is not a case sensitive language. You can use uppercase or lowercase letters. However, by
+  convention we use lowercase letters. The `DOCTYPE` declaration is an exception.
+</Callout>
+
+Now, define the structure of the document using HTML elements, also known as tags. First include `<html>{:html}`. This is the root element of the document. All other elements must be inside of it.
+
+```html copy filename="index.html" {2}
+<!DOCTYPE html>
+<html lang="en"></html>
+```
+
+![HTML Element](public/html/element-en.png)
+
+Most HTML elements have three parts:
+
+- Opening tag: The name of the element surrounded by `<>`. Example: `<div>`
+- Content: The content can be text or another HTML element
+- Closing tag: The name of the element surrounded by `<>`, with a forward slash before the name of the element `</>`. Example: `</div>`
+
+HTML elements can also have attributes which are written inside the opening tag.
+
+```html
+<html lang="en"></html>
+```
+
+For the previous example, `lang{:html}` is an attribute and `"en"{:html}` is the value for such attribute. The `lang{:html}` attribute specifies the website's language. Here we are setting the language to English `en`.
+
+There are also self-closing tags. These do not have content or a closing tag. The complete HTML element is the name of the element surrounded by `<>`, with an optional slash `/` before the less than sign `>`.
+
+```html copy
+<input type="text" name="city" />
+```
+
+## Metadata and Content
+
+Add the `<head>{:html}` and `<body>{:html}` tags inside `<html>{:html}`.
+
+```html copy filename="index.html" {3-4}
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <body></body>
+</html>
+```
+
+The `<head>{:html}` contains all the metadata for the document. The `<body>{:html}` contains all the content that will be displayed in the browser.
+
+Start by adding `<meta>{:html}` tags inside the `<head>{:html}`, to declare metadata for the HTML document.
+
+```html showLineNumbers copy filename="index.html" {4-6, 9-10}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your First HTML Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Optional -->
+    <meta name="description" content="Welcome to my first ever website!" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body></body>
+</html>
+```
+
+The `<title>{:html}` is used to specify the title of the document. This is what will be displayed in the browser's tab. The `charset{:html}` attribute of the `<meta>{:html}` tag is used to specify the character set of the document. The `name` attribute of a `<meta>{:html}` tag is used to specify the name of the metadata. In the example is used to specify the desired viewport settings and the description of the document.
+
+The `<link>{:html}` tag is used to specify the location of a resource. In this case we are specifying the location of the favicon. The favicon is the small icon that is displayed in the browser's tab.
+
+Now, start adding content by adding a `<main>{:html}` tag inside the `<body>{:html}`.
+
+```html showLineNumbers copy filename="index.html" {13}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your First HTML Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to my first ever website!" />
+
+    <!-- Optional -->
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <main>Hello World!</main>
+  </body>
+</html>
+```
+
+From this point forward you will be mostly working inside the `<body>{:html}` because the rest of the document is automatically generated or abstracted in some way by Next.js and other JavaScript frameworks you will be using as a Front-End Engineer.
+
+## Setup a playground
+
+1. Install [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VSCode.
+
+2. Create an `index.html` file anywhere in your file system, and paste the code from the `hello world` example.
+
+<Callout type="warning" emoji="⚠️">
+  You must save the file before you run the server.
+</Callout>
+
+3. Right click on the document and select `Open With Live Server`.
+
+A new tab will automatically open in your default browser with the document you just created. Any changes you make will be applied after you save the file.

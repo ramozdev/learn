@@ -1,0 +1,111 @@
+# Set
+
+A `Set{:js}` is an unordered list of unique values.
+
+```js copy
+const arr = [1, 2, 3, 3, 3, 2, 1]
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 1, 2, 3 }
+console.log(mySet.has(2)) // true
+```
+
+## Convert a Set to an Array
+
+You can use the spread operator `...` or `Array.from(){:js}`:
+
+```js copy
+const arr = [4, 5, 4, 3, 4, 2, 1]
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 4, 5, 3, 2, 1 }
+
+// Convert Set to Array using the spread operator
+const spread = [...mySet]
+
+console.log(spread) // [ 4, 5, 3, 2, 1 ]
+console.log(spread[1]) // 5
+
+// Convert Set to Array using Array.from
+const from = Array.from(mySet)
+
+console.log(from) // [ 4, 5, 3, 2, 1 ]
+console.log(from[1]) // 5
+```
+
+## add
+
+```js copy
+const arr = [false, 99, undefined, false, null, null]
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { false, 99, undefined, null }
+mySet.add(true)
+console.log(mySet) // Set { false, 99, undefined, null, true }
+```
+
+## clear
+
+```js copy
+const arr = [9, 8, 7, 6, 9, 7, 7, 7]
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 9, 8, 7, 6 }
+mySet.clear()
+console.log(mySet) // Set { }
+```
+
+## delete
+
+```js copy
+const arr = ['okay', 'okay', 'okay', 'ok', 'ok']
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 'okay', 'ok' }
+console.log(mySet.delete('ok')) // true
+console.log(mySet) // Set { 'okay' }
+```
+
+## forEach
+
+```js copy
+const arr = ['bum bum', 'tam tam', 'bum bum', 'tam tam']
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 'bum bum', 'tam tam' }
+mySet.forEach((item) => {
+  console.log(item)
+})
+// bum bum
+// tam tam
+```
+
+## has
+
+```js copy
+const arr = ['c', 'b', 'a', 'a', 'b', 'c']
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 'c', 'b', 'a' }
+console.log(mySet.has('a')) // true
+console.log(mySet.has('z')) // false
+```
+
+## values
+
+```js copy
+const arr = ['po', 'po', 'po', 'di', 'di', 'di']
+const mySet = new Set(arr)
+
+console.log(mySet) // Set { 'po', 'di' }
+const values = mySet.values()
+for (const item of values) {
+  console.log(item)
+}
+// po
+// di
+```
+
+The `keys(){:js}` method is not explained because it does the same as `values(){:js}`. You can use these two methods interchangeably.
+
+The `entries(){:js}` method is not explained because you will probably never use it.

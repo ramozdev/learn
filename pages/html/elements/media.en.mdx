@@ -1,0 +1,33 @@
+# Image and Multimedia
+
+## \<audio\>: Embed Audio
+
+Used to embed sound content in documents. It may contain one or more audio sources, represented using the `src` attribute or the source element: the browser will choose the most suitable one. It can also be the containing element for text that is displayed when the browser does not support the audio element.
+
+```html copy
+<audio controls>
+  <source src="horse.ogg" type="audio/ogg" />
+  <source src="horse.mp3" type="audio/mpeg" />
+</audio>
+```
+
+## \<img\>: Image Embed
+
+Used to embed an image in an HTML page. Images are not technically inserted into a web page; images are linked to web pages. The `<img>` tag creates a holding space for the referenced image.
+
+```html copy
+<img src="https://mdn.mozillademos.org/files/5397/rhino.jpg" alt="Rhino" />
+```
+
+## \<track\>: Embed Text Track
+
+## \<video\>: Video Embed
+
+Used to embed video content in documents. It may contain one or more video sources, represented using the `src` attribute or the source element: the browser will choose the most suitable one. It can also be the containing element for text that is displayed when the browser does not support the video element.
+
+```html copy
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+</video>
+```

@@ -1,0 +1,392 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Lo Básico
+
+## Variables
+
+Una variable es un nombre simbólico para un valor almacenado en memoria. Las variables se declaran de dos maneras.
+
+- `let{:js}`: Declara una variable local de bloque, opcionalmente inicializándola a un valor.
+- `const{:js}`: Declara una constante de bloque y de sólo lectura.
+
+<Callout type="info" emoji="ℹ️">
+  Siempre usa `const{:js}` para declarar una variable a menos que necesites cambiar su valor después de declararla.
+</Callout>
+
+<Callout type="error" emoji="️🚫">
+  También puedes declarar variables utilizando la palabra clave `var{:js}`, pero esto ya no se utiliza porque hace que el código sea más propenso a errores.
+</Callout>
+
+Declaremos una variable local llamada `edad` y asignémosle un valor de `22{:js}`.
+
+```js copy
+let edad = 22
+```
+
+Ahora declara una constante de sólo lectura llamada `color` y asígnale el valor `'rosado'{:js}`.
+
+```js copy
+const color = 'rosado'
+```
+
+El texto que utilizamos para nombrar una variable se denomina `identificador`, y dichos identificadores siguen un criterio de denominación
+
+- Los caracteres permitidos incluyen letras mayúsculas de la `A` a la `Z`, minúsculas de la `a` a la `z` y números del `0` al `9`.
+- Debe empezar con una letra, guión bajo (\_) o signo de dólar ($).
+- No puede contener espacios ni guiones (-)
+
+Éstos son algunos identificadores **inválidos**:
+
+- `3size`: No puede empezar por número
+- `primer-nombre` No puede contener guión (-)
+- `segundo nombre` No puede contener espacios
+
+Y aquí algunos identificadores **válidos**:
+
+- `size`
+- `primerNombre`
+- `segundoNombre`
+- `tela268`
+- `losDeAtrasVienenConmigo`
+- `$resultados`
+- `_email`
+
+### Notas
+
+1. JavaScript es un lenguaje que distingue entre mayúsculas y minúsculas, por lo que los identificadores distinguen entre mayúsculas y minúsculas. Esto significa que `edad` y `edaD` son identificadores diferentes.
+
+2. Los identificadores deben utilizar [notación camelCase](https://wikipedia.org/wiki/Camel_case) por convención.
+
+Para cumplir con esta convención:
+
+- Escribe la primera letra en minúscula
+- Separa las palabras poniendo en mayúscula la primera letra de cada palabra
+
+Ejemplos incorrectos:
+
+- `MiLapiz`: la primera letra no es minúscula. Debería ser "miLapiz".
+- `laManzanaverde`: La primera letra de `verde` no es mayúscula. Debería ser `laManzanaVerde`.
+
+Ejemplos correctos:
+
+- `miBici`
+- `resultadoFinal`
+- `tiempo`
+
+## Tipos de datos primitivos
+
+Cualquier valor que asignemos a una variable pertenece a un tipo de dato. Podemos asignar los siguientes tipos de datos a una variable:
+
+### String - Cadena de caracteres
+
+Un `string` es una cadena de caracteres encerrada entre comillas simples `''{:js}` o dobles `""{:js}`.
+
+```js copy
+const nombre = 'Pablo'
+```
+
+`'Pablo'{:js}` es una cadena que contiene los caracteres `'P'{:js}`, `'a'{:js}`, `'b'{:js}`, `'l'{:js}`, `'o'{:js}`.
+
+Puedes combinar cadenas utilizando la suma `+{:js}`. Esto se conoce como concatenación de cadenas.
+
+```js copy
+const primerNombre = 'Pablo'
+const apellido = 'Picasso'
+
+// Fusiona el primer nombre y apellido y añade un espacio en medio
+const nombreCompleto = primerNombre + ' ' + apellido
+
+console.log(nombreCompleto + ' pintó esto.') // logs 'Pablo Picasso pintó esto.'
+```
+
+### Number
+
+Un `number` es un tipo de dato numérico. He aquí algunos ejemplos de números:
+
+```js copy
+let cero = 0
+let estatura = 2.49
+let puntajeNegativo = -22
+let vida = 42
+```
+
+Exploraremos los números con más detalle porque los números son un tema complejo. Si necesita más información [consulta MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates) para obtener una referencia completa de los números que se pueden utilizar en JavaScript.
+
+### Boolean
+
+Un `boolean` es un tipo de dato lógico que sólo puede ser `true{:js}` que significa verdadero o `false{:js}` que significa falso.
+
+```js copy
+let estaActivo = false
+let estaMuerto = true
+```
+
+### Undefined
+
+Si declaras una variable utilizando `let{:js}` y no le asignas un valor, JavaScript le asignará un valor de `undefined{:js}`.
+
+```js copy
+let cosa
+
+console.log(cosa) // logs 'undefined'
+```
+
+También puede asignarse explícitamente.
+
+```js copy
+const segundoNombre = undefined
+let nombre = undefined
+```
+
+### Null
+
+`null{:js}` indica que no hay valor o la ausencia de un valor.
+
+```js copy
+const colorFavorito = null
+```
+
+## Literales de plantilla (cadenas de plantilla)
+
+Los literales de plantilla, también conocidos como cadenas de plantilla, están encerrados entre comillas (`) y pueden utilizarse para crear cadenas, del mismo modo que funciona con comillas simples o dobles. Sin embargo, con los literales de plantilla también puedes crear cadenas de varias líneas y realizar interpolación de cadenas.
+
+```js copy
+console.log(`cadena simple`) // logs 'cadena simple'
+
+console.log(`cadena
+            multi-linea`)
+// logs cadena multi-linea
+
+// Interpolación de cadenas
+const fisico = 'Newton'
+console.log(`Isaac ${fisico} está muerto.`)
+// logs 'Isaac Newton está muerto.'
+```
+
+La interpolación de cadenas te permite insertar un valor en una cadena. Puede utilizarse en lugar de la concatenación de cadenas.
+
+```js copy
+const vehiculo = 'bicicleta'
+
+const concatenacionDeCadenas = 'Una ' + vehiculo + ' tiene ' + 2 + ' ruedas.'
+const interpolacionDeCadenas = `Una ${vehiculo} tiene ${2} ruedas.`
+
+console.log(concatenacionDeCadenas) // logs 'Una bicicleta tiene 2 ruedas.'
+console.log(interpolacionDeCadenas) // logs 'Una bicicleta tiene 2 ruedas.'
+```
+
+Para interpolar una cadena, enciérrala entre acentos graves (\`), e inyecta JavaScript en cualquier parte de la cadena entre llaves, precedida por el signo de dólar `${}`.
+
+```js copy
+const miVariable = 22
+const otraVariable = 'Hola mundo!'
+const lorem = `una cadena ${miVariable} más texto ${otraVariable} texto.`
+console.log(lorem) // 'una cadena 22 más texto Hola mundo! text.'
+
+const velocidad = 30
+const ejemplo = `LOREM ${velocidad > 100 ? `Vas muy rápido` : `No vas tan rápido`} IPSUM.`
+console.log(ejemplo) // "LOREM No vas tan rápido IPSUM."
+```
+
+La interpolación de cadenas se utiliza **extensamente** en el desarrollo front-end.
+
+## Tipos de datos de referencia
+
+### Matrices
+
+Una matriz almacena una lista ordenada de valores encerrados entre corchetes `[]{:js}`, separados por una coma `,`. Cada valor de la matriz es un `elemento`.
+
+```js copy
+const numeros = [2, 1, 3, 5]
+```
+
+La matriz `numeros` tiene 4 elementos, `2{:js}`, `1{:js}`, `3{:js}` y `5{:js}`.
+
+Los elementos de una matriz se referencian por su posición en la matriz. Las matrices en JavaScript son de índice cero, lo que significa que uno empieza a contar desde `0{:js}` desde el elemento más a la izquierda.
+
+```js copy
+//       Índice:    0         1        2       3
+const frutas = ['manzana', 'banana', 'pera', 'kiwi']
+
+console.log(frutas[0]) // logs 'manzana'
+```
+
+El elemento `'manzana'{:js}` está en la primera posición de este array `frutas`, por lo que `'manzana'{:js}` tiene un índice de `0{:js}`.
+
+También podemos modificar los elementos de un array. Aquí actualizamos el segundo elemento de la matriz `mediciones` de `3.14{:js}` a `2.22{:js}`.
+
+```js copy
+//        Índice:    0     1     2
+const mediciones = [1.12, 3.14, 2.98]
+
+mediciones[1] = 2.22
+
+//                      Índice:   0     1     2
+console.log(mediciones) // logs [1.12, 2.22, 2.98]
+```
+
+Las matrices son redimensionables, lo que significa que podemos añadir elementos a una matriz. Aquí añadimos un cuarto elemento `'José'{:js}`, a la matriz `nombres`.
+
+```js copy
+//      Índice:    0       1       2
+const nombres = ['Juan', 'John', 'Jeff']
+
+nombres[3] = 'José'
+
+//                   Índice:    0       1       2       3
+console.log(nombres) // logs ['Juan', 'John', 'Jeff', 'José']
+```
+
+Los elementos de una matriz pueden ser un tipo de datos primitivo, matrices y objetos.
+
+```js copy
+const aleatorio = [null, 'agua', 3.14, undefined, false, ['a', 'b'], { nombre: 'George' }]
+
+console.log(aleatorio[0]) // logs null
+console.log(aleatorio[2]) // logs 3.14
+console.log(aleatorio[5]) // logs ['a', 'b']
+console.log(aleatorio[6]) // logs { nombre: 'George' }
+```
+
+Observa que podemos utilizar varios tipos de datos en la misma matriz. JavaScript no limita una matriz a ser sólo números `[1, 2, 3]{:js}` o sólo cadenas `['a', 'b', 'c']{:js}`, etc.
+
+Las matrices tienen un uso **extensible**. Tendremos una sección entera para estudiar los arrays con más detalle.
+
+### Objetos
+
+Un objeto es una colección de pares clave-valor. Las claves son cadenas únicas y los valores pueden ser cualquier tipo de dato de JavaScript.
+
+```js copy
+const vehiculo = {
+  ruedas: 4,
+  marca: 'Toyota',
+  propietario: null
+}
+```
+
+En el objeto `vehiculo`, la clave `marca` tiene el valor `'Toyota'{:js}` y la clave `ruedas` tiene el valor `4{:js}`.
+
+Utilizamos las claves del objeto para leer sus valores. Esto puede hacerse utilizando la notación de puntos o la notación de corchetes.
+
+Podemos usar la notación de corchetes para pasar una variable que contenga la clave que queremos leer.
+
+```js copy
+const post = {
+  titulo: 'La felicidad es paz en movimiento',
+  autor: 'Naval',
+  meGusta: 91239123,
+  tags: ['felicidad', 'paz']
+}
+
+// Notación de puntos
+console.log(post.autor) // logs 'Naval'
+
+// Notación de corchetes
+console.log(post['meGusta']) // logs 91239123
+
+const keyToRead = 'tags'
+console.log(post[keyToRead]) // logs ['felicidad', 'paz']
+```
+
+Una clave de objeto puede tener como valor un objeto o una matriz. Para leer valores anidados podemos utilizar la notación de puntos o corchetes y encadenar las claves que queremos leer a medida que profundizamos en el objeto anidado.
+
+```js copy
+const chico = {
+  nombre: 'Carlos',
+  edad: 22,
+  esCalvo: true,
+  intereses: ['Computadoras', 'Lógica', 'Matemática'],
+  direccion: {
+    street: '256 Calle Flores',
+    provincia: 'Nuevo Roble',
+    codigoPostal: undefined
+  }
+}
+
+// ---- Nested Object ----
+// Notación de puntos
+console.log(chico.direccion.provincia) // logs Nuevo Roble
+
+// Notación de corchetes
+console.log(chico['direccion']['provincia']) // logs Nuevo Roble
+
+// Combina la notación de puntos y la notación de corchetes
+console.log(chico.direccion['provincia']) // logs Nuevo Roble
+console.log(chico['direccion'].provincia) // logs Nuevo Roble
+
+// ---- Array ----
+// Notación de puntos
+console.log(chico.intereses[0]) // logs 'Computadoras'
+// Notación de corchetes
+console.log(chico['intereses'][1]) // logs 'Lógica'
+```
+
+Puedes añadir, actualizar y eliminar propiedades de objetos.
+
+```js copy
+const telefono = {
+  marca: 'Apple',
+  almacenamiento: 128
+}
+
+// Añade una propiedad
+telefono.color = 'negro'
+console.log(telefono) /* logs
+{ 
+  marca: 'Apple',
+  almacenamiento: 128,
+  color: 'negro'
+}
+*/
+
+// Modifica una propiedad
+telefono.color = 'rojo'
+console.log(telefono) /* logs
+{
+  marca: 'Apple',
+  almacenamiento: 128,
+  color: 'rojo'
+}
+*/
+
+// Elimina una propiedad
+delete telefono.color
+console.log(telefono) /* logs
+{
+  marca: 'Apple',
+  almacenamiento: 128
+}
+*/
+```
+
+## Otros
+
+### Comentarios
+
+Un comentario es un texto añadido por el desarrollador que no tiene ningún efecto sobre el código. Normalmente, los desarrolladores utilizan los comentarios para explicar cómo funciona una sección del código.
+
+Para escribir comentarios de una sola línea utiliza la barra doble `//`.
+
+```js copy
+// Comentario de una sola línea
+console.log('Hola Mundo!') // Otro comentario de una sola línea
+```
+
+Ten en cuenta que para los comentarios de una sola línea puedes utilizar toda la línea o añadirla al final de una sentencia.
+
+Para escribir comentarios de varias líneas, utiliza la barra con asterisco `/*` para abrir el comentario y la barra con asterisco con barra `*/` para cerrarlo.
+
+```js copy
+/*
+Comentario
+multi-linea
+*/
+```
+
+### Comillas Simples vs. Comillas Dobles
+
+JavaScript interpreta de la misma forma las comillas simples `''` y las dobles `""`. Puede utilizar la que prefiera.
+
+### Punto y coma
+
+El uso del punto y coma `;` al final de cada sentencia es opcional, gracias a [Inserción automática de punto y coma](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion).

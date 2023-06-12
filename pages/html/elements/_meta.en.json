@@ -1,0 +1,15 @@
+{
+  "text": "Text",
+  "inline": "Inline",
+  "content": "Content",
+  "interactive": "Interactive",
+  "media": "Image and Multimedia",
+  "form": "Form",
+  "table": "Table",
+  "svg": "SVG",
+  "body": "Body",
+  "html": "Root",
+  "metadata": "Metadata",
+  "scripting": "Scripting",
+  "embedded": "Embedded"
+}

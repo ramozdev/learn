@@ -1,0 +1,15 @@
+{
+  "basics": "Básico",
+  "conditional": "Condicional",
+  "loop": "Bucle",
+  "function": "Función",
+  "operator": "Operador",
+  "array": "Matriz (Arreglo)",
+  "object": "Objeto",
+  "sets": "Conjunto",
+  "date": "Fecha",
+  "error": "Error",
+  "async": "Async, Await",
+  "built-in": "Incluido",
+  "advanced": "Avanzado"
+}

@@ -1,0 +1,114 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Terminal / Interfaz de línea de comandos (CLI)
+
+La terminal es una interfaz basada en texto para el sistema operativo. Se usa en el desarrollo front-end para instalar software, crear archivos, correr servidores locales para obtener una vista previa de nuestros sitios web, entre otras cosas.
+
+## Comenzar
+
+Presiona `Ctrl + Alt + T` para abrir una ventana de terminal. O puede buscar `terminal` en la barra de búsqueda.
+
+## Comandos
+
+Se abrirá una ventana con un mensaje similar a este:
+
+```bash
+usuario@equipo ~ %
+```
+
+El primer objetivo es crear un directorio llamado `web`, donde se almacenará el código de todos tus proyectos.
+
+Primero, ejecuta el comando `pwd` para conocer la ruta de nuestro directorio de trabajo actual. En otras palabras, queremos saber en qué "carpeta" se encuentra actualmente la terminal.
+
+Escribe `pwd` y presiona enter.
+
+```bash copy
+pwd
+```
+
+Espere una ruta de la forma `/home/username`. Esta es la ruta a su directorio de inicio.
+
+Ahora usamos el comando `ls` para ver el contenido del directorio actual.
+
+```bash copy
+ls
+```
+
+Espere una lista de directorios y archivos:
+
+```
+Downloads   Music       Desktop       Pictures
+Documents   Movies      Public        web
+```
+
+Cree un nuevo directorio llamado `web` usando el comando `mkdir` donde almacenaremos el código para todos nuestros proyectos.
+
+```bash copy
+mkdir web
+```
+
+<Callout type="warning" emoji="⚠️">
+  Por convención, los archivos y las carpetas se deben nombrar usando solo caracteres en minúsculas
+  y reemplazando todos espacios con un guión/guión `-`, a menos que exista un requisito para hacer
+  lo contrario.
+</Callout>
+
+Ejecute `ls` de nuevo, para confirmar que se creó el directorio `web`.
+
+```bash
+$ ls
+Downloads   Music       Desktop       Pictures
+Documents   Movies      Public        web
+```
+
+Navega a `web` usando el comando de cambio de directorio `cd`.
+
+```bash copy
+cd web
+```
+
+Para asegurarse de que se movió correctamente, verifique la ruta al directorio actual nuevamente, usando `pwd`.
+
+```bash copy
+pwd
+```
+
+Debería obtener una ruta de la forma:
+
+```
+/home/usuario/web
+```
+
+Para regresar, debe usar la sintaxis `..` que indica el directorio principal del directorio de trabajo actual. Por ejemplo, `cd ..` lo llevará a `/home/username`
+
+```bash copy
+cd ..
+```
+
+```bash
+pwd
+/home/username
+```
+
+<Callout type="warning" emoji="⚠️">
+  Si alguna vez recibe un error al ejecutar un comando en la terminal, verifique que haya escrito
+  todo correctamente, **incluyendo espacios**. `cd..` es un comando diferente de `cd ..`. El primero
+  tirará un error porque no incluye un espacio después del comando `cd`.
+</Callout>
+
+## Manual
+
+Para ver todas las opciones disponibles para un comando, preceda el comando con `man` y presione enter, por ejemplo, `man ls` mostrará el manual para el comando `ls`.
+
+Pulse `q` para salir del manual.
+
+## Hoja de trucos de la línea de comandos
+
+| comando | descripción                                                                                          |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| cd      | cambiar directorio para navegar por el sistema de archivos                                           |
+| cd ~    | cambiar de directorio al directorio de inicio                                                        |
+| pwd     | devuelve la ruta del directorio actual                                                               |
+| ls      | enlista el contenido del directorio actual                                                           |
+| ls -la  | enlista el contenido del directorio, incluyendo los archivos ocultos `-a`, en la vista de lista `-l` |
+| mkdir   | crear un directorio                                                                                  |

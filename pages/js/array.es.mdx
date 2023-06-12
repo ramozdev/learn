@@ -1,0 +1,492 @@
+# Matriz
+
+Una matriz es un objeto en JavaScript. Este objeto tiene propiedades y métodos.
+
+## Propiedades
+
+### length
+
+Si queremos saber la longitud de una matriz, llamamos a su propiedad `length`.
+
+```js copy
+const ciudades = ['Tokio', 'São Paulo', 'Santo Domingo']
+
+console.log(ciudades.length) // 3
+```
+
+## Métodos
+
+### at
+
+Para obtener el último elemento de una matriz, pasa `-1{:js}` al método `.at(){:js}`.
+
+```js copy
+const colores = ['azul', 'rojo', 'verde']
+
+console.log(colores.at(-1)) // 'verde'
+```
+
+### every
+
+Comprueba si todos los elementos de una matriz cumplen una condición.
+
+```js copy
+const numeros = [22, 33, 44, 55, 66]
+
+// Comprueba si cada número en `numeros` es menor que 70.
+console.log(numeros.every((number) => number < 70)) // true
+```
+
+### fill
+
+Reemplaza elementos en una matriz con un valor proporcionado. Si no se proporciona un rango, todos los elementos serán reemplazados.
+
+```js copy
+const enteros = [9, 8, 7, 6, 5]
+
+const llenoConNull = enteros.fill(null)
+const llenoConUnos = enteros.fill(1, 2)
+const llenoConCeros = enteros.fill(0, 1, 3)
+
+console.log(llenoConNull) // [null, null, null, null, null]
+console.log(llenoConUnos) // [9, 8, 1, 1, 1]
+console.log(llenoConCeros) // [9, 0, 0, 0, 5]
+```
+
+### filter
+
+Elimina todos los elementos de una matriz para los que una condición se evalúa como falsa.
+
+```js copy
+const datos = [
+  { nombre: 'Roberto', edad: 25 },
+  { nombre: 'María', edad: 17 }
+]
+
+const oldEnough = data.filter((persona) => persona.edad >= 18)
+
+console.log(oldEnough) // [{nombre: 'Roberto', edad: 25}]
+```
+
+### find
+
+Encuentra el primer elemento de una matriz que cumpla una condición.
+
+```js copy
+const estadosDeLaMateria = ['sólido', 'líquido', 'gas', 'plasma']
+
+const resultado = estadosDeLaMateria.find((elemento) => elemento.length === 5)
+
+console.log(resultado) // 'sólido'
+```
+
+### findIndex
+
+Obtén el índice del primer elemento de una matriz que cumple una condición.
+
+```js copy
+const albumes = ['Vida', 'Muerte', 'Apa y Can']
+
+let resultado = albumes.findIndex((album) => album.startsWith('Apa'))
+
+console.log(resultado) // 2
+
+resultado = albums.findIndex((album) => album === 'Guía Para La Acción')
+
+console.log(resultado) // -1
+```
+
+### findLast
+
+Encuentra el último elemento de una matriz que cumple una condición.
+
+```js copy
+const letras = ['a', 'bb', 'ccc', 'ddd', 'ee', 'f']
+
+const resultado = letras.findLast((elemento) => elemento.length === 3)
+
+console.log(resultado) // 'ddd'
+```
+
+### findLastIndex
+
+Obtén el índice del último elemento de una matriz que cumple una condición.
+
+```js copy
+const disponibilidad = [
+  ['dom', true],
+  ['lun', false],
+  ['mar', false],
+  ['jue', true]
+]
+
+const resultado = disponibilidad.findLastIndex((elemento) => elemento[1] === false)
+
+console.log(resultado) // 2
+```
+
+### flat
+
+```js copy
+const puntuaciones = [3, 12, [5, 7, [4, 1]], 9]
+
+let resultado = puntajes.flat()
+
+console.log(resultado) // [3, 12, 5, 7, [4, 1], 9]
+
+resultado = puntajes.flat()
+
+console.log(resultado) // [3, 12, 5, 7, 4, 1, 9]
+```
+
+### flatMap
+
+```js copy
+const puntuaciones = [
+  ['Jennifer', 0],
+  ['James', 50],
+  ['Sara', 450]
+]
+
+const resultado = puntuaciones.flatMap(([jugador, puntuación]) => [
+  jugador.toUpperCase(),
+  `${puntuación} puntos`
+])
+
+console.log(resultado)
+// ['JENNIFER', '0 puntos', 'JAMES', '50 puntos', 'SARAH', '450 puntos']
+```
+
+Aquí usamos la asignación de desestructuración
+
+### forEach
+
+Ejecute sentencias para cada elemento de la matriz sin modificar la matriz original.
+
+```js copy
+const animales = ['perros', 'gatos', 'vacas']
+
+const hechos = []
+
+animales.paraCada((animal) => {
+  console.log(`${animal} son mamíferos`)
+  hechos.push(`${animal} son mamíferos`)
+}) /*
+'los perros son mamíferos'
+'los gatos son mamíferos'
+'las vacas son mamíferos'
+*/
+
+console.log(hechos)
+// ['los perros son mamíferos', 'los gatos son mamíferos', 'las vacas son mamíferos']
+```
+
+### from
+
+Crea una matriz a partir de un objeto Iterable u otra matriz.
+
+```js copy
+const arrayFromString = Array.from('abc')
+console.log(arrayFromString) // ['a', 'b', 'c']
+
+// Usando una función de mapeo
+const mappedArray = Array.from([1, 2, 3], (x) => x + x)
+console.log(matrizmapeada) // [2, 4, 6]
+
+// Conjuntos
+const miConjunto = new Set(['abc', 'abc', 'xyz', 'xyz', 'foo'])
+const arrayFromMySet = Array.from(mySet)
+console.log(arrayFromMySet) // [ 'abc', 'xyz', 'foo' ]
+
+// Mapas
+const hashTable = new Map([
+   [4, 'a'],
+   [5, 'b'],
+   [6, 'c']
+])
+const entradas = Array.from(hashTable)
+console.log(entradas) // [[4, 'a'], [5, 'b'], [6, 'c']]
+
+// `valores` es un objeto iterable, no una matriz
+const valores = tablahash.values()
+const hashTableValues = Array.from(valores)
+console.log(hashTableValues) // ['a', 'b', 'c']
+
+// `keys` es un objeto iterable, no una matriz
+teclas const = hashTable.keys()
+const hashTableKeys = Array.from(claves)
+console.log(hashTableKeys) // [4, 5, 6]
+```
+
+### includes
+
+Comprobar si una matriz contiene un valor.
+
+```js copy
+const compra = ['cocos', 'arroz', 'frijoles']
+
+const comprasteFrijoles = compra.includes('frijoles')
+
+console.log(comprasteFrijoles) // true
+```
+
+### indexOf
+
+Obtenga el índice del primer elemento en una matriz que es igual a un valor determinado.
+
+```js copy
+const semana = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab']
+
+const indiceDeLunes = semana.indexOf('lun')
+
+console.log(indiceDeLunes) // 1
+```
+
+### isArray
+
+Determine si un valor de JavaScript es una matriz.
+
+```js copy
+// todas las siguientes llamadas devuelven true
+Array.isArray([])
+Array.isArray([1])
+Array.isArray(new Array())
+Array.isArray(new Array('a', 'b', 'c'))
+Array.isArray(new Array(33))
+
+// todas las siguientes llamadas devuelven false
+Array.isArray(25)
+Array.isArray('Array')
+```
+
+### join
+
+Convierta los elementos de la matriz en una cadena separada por comas o en un separador de cadena arbitrario.
+
+```js copy
+const ruta = ['usuario', 123, 'configuración']
+
+const commaSeparated = ruta.join()
+const sinSeparacion = ruta.join('')
+const slashSeparated = ruta.join('/')
+
+console.log(commaSeparated) // 'usuario,123,configuraciones'
+console.log(sinSeparacion) // 'usuario123configuraciones'
+console.log(slashSeparated) // 'usuario/123/configuraciones'
+```
+
+### lastIndexOf
+
+Obtenga el índice del último elemento en una matriz que es igual a un valor determinado.
+
+```js copy
+const elementos = ['teclado', 'ratón', 'ratón', 'monitor']
+
+const resultado = items.lastIndexOf('mouse')
+
+console.log(resultado) // 2
+```
+
+### map
+
+El método `.map(){:js}` devuelve una nueva matriz donde se aplica una función a todos los elementos.
+
+```js copy
+const apellidos = ['nietzsche', 'duarte', 'amarante']
+
+const newArr = arr.map((lastName) => lastName.toUpperCase())
+
+console.log(nuevaArr) // ['NIETZSCHE', 'DUARTE', 'AMARANTE']
+```
+
+### pop
+
+Elimina el último elemento de una matriz.
+
+```js copy
+const listaDeCompras = ['huevos', 'arroz']
+
+listaDeCompras.pop()
+
+console.log(listaDeCompras) // ['huevos']
+```
+
+### push
+
+Agrega uno o más elementos al final de una matriz y devuelve la nueva longitud de la matriz.
+
+```js copy
+const listaDeCompras = ['huevos', 'arroz']
+
+listaDeCompras.push('leche')
+
+console.log(listaDeCompras) // ['huevos', 'arroz', 'leche']
+```
+
+```js copy
+const listaDeCompras = ['huevos', 'arroz']
+
+listaDeCompras.push('leche', 'frijoles', 'harina')
+
+console.log(listaDeCompras)
+// ['huevos', 'arroz', 'leche', 'frijoles', 'harina']
+```
+
+### reduce
+
+```js copy
+const numeros = [1, 2, 3, 4]
+
+// 0 + 1 + 2 + 3 + 4
+valor inicial constante = 0
+const sumaConInicial = array1.reduce(
+   (acumulador, currentValue) => acumulador + currentValue,
+   valor inicial
+)
+
+console.log(sumaConInicial) // 10
+```
+
+### reduceRight
+
+```js copy
+const letras = ['a', 'b', 'c', 'd']
+
+const sumWithInitial = array1.reduceRight((acumulador, valor actual) => acumulador + valor actual)
+
+console.log(sumaConInicial) // 'dcba'
+```
+
+### reverse
+
+Invierte el orden de una matriz y la devuelve como un nuevo elemento.
+
+```js copy
+const ordenado = ['primero', 'segundo', 'tercero']
+
+let invertido = ordenado.reverse()
+
+console.log(invertido) // ['tercero', 'segundo', 'primero']
+```
+
+### shift
+
+Elimina el primer elemento de una matriz y lo devuelve.
+
+```js copy
+const derechos = ['Discurso', 'Vida', 'Asociación']
+
+const primeraDerecha = derechos.shift()
+
+console.log(derechos) // ['Vida', 'Asociación']
+console.log(firstRight) // 'Discurso'
+```
+
+### slice
+
+Retorna una parte de la matriz como una nueva matriz.
+
+La porción se selecciona de principio a fin (final no incluido) referenciada por índice.
+
+```js copy
+const organos = ['hígado', 'pulmón', 'corazón', 'cerebro']
+
+const primeraCorte = organos.slice(1)
+const segundaCorte = organos.slice(1, 2)
+const tercerdaCorte = organos.slice(-1)
+const cuartaCorte = organos.slice(1, 3)
+
+console.log(primeraCorte) // ['pulmón', 'corazón', 'cerebro']
+console.log(segundaCorte) // ['pulmón']
+console.log(tercerdaCorte) // ['cerebro']
+console.log(cuartaCorte) // ['pulmón', 'corazón']
+console.log(organos) // ['hígado', 'pulmón', 'corazón', 'cerebro']
+```
+
+### some
+
+Retorna `true{:js}` si al menos un elemento de la matriz cumple una condición; de lo contrario, devuelve `false{:js}`.
+
+```js copy
+const tusSentimientos = ['Lujuria', 'Amor']
+
+const estasPecando = tusSentimientos.some((sentimiento) => sentimiento === 'Lujuria')
+
+console.log(estasPecando) // true
+```
+
+### sort
+
+Ordena una matriz siguiendo un criterio. Si no se proporciona ningún criterio, las cadenas se ordenan alfabéticamente.
+
+```js copy
+const palabrasQueMeGustan = ['efectivo', 'lujoso', 'charcutería', 'activos']
+palabrasQueMeGustan.sort()
+console.log(palabrasQueMeGustan)
+// ['activos', 'efectivo', 'charcutería', 'lujoso']
+
+const numeros = [44, 789, 19999, 1080, 5]
+numeros.sort()
+console.log(numeros)
+// [1080, 19999, 44, 5, 789]
+```
+
+### splice
+
+```js copy
+const prioridades = ['salud', 'fama']
+
+let salida = prioridades.splice(2, 0, 'familia')
+
+console.log(prioridades) // ['salud', 'fama', 'familia']
+console.log(salida) // []
+
+salida = prioridades.splice(1, 1)
+
+console.log(prioridades) // ['salud', 'familia']
+console.log(salida) // ['fama']
+```
+
+### unshift
+
+Agrega uno o más elementos al comienzo de una matriz y devuelve la nueva longitud de la matriz.
+
+```js copy
+const derechos = ['Vida', 'Asociación']
+
+const derechosNuevaLongitud = derechos.unshift('Discurso')
+
+console.log(derechos) // ['Discurso', 'Vida', 'Asociación']
+console.log(derechosNuevaLongitud) // 3
+```
+
+```js copy
+const derechos = ['Vida', 'Asociación']
+
+const derechosNuevaLongitud = derechos.unshift('Discurso', 'Privacidad')
+
+console.log(derechos)
+// ['Discurso', 'Privacidad', 'Vida', 'Asociación']
+console.log(derechosNuevaLongitud) // 4
+```
+
+## Varios
+
+### Matrices de orden superior
+
+```js copy
+// matriz 2D
+const matriz = [
+  ['a', 1],
+  ['b', 2]
+]
+
+console.log(matriz[0][0]) // 'a'
+console.log(matriz[0][1]) // 1
+console.log(matriz[1][0]) // 'b'
+console.log(matriz[1][1]) // 2
+```
+
+### Referencia
+
+Para obtener una lista completa del método de matriz, consulte la [página de MDN] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).

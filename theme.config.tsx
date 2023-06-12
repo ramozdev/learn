@@ -1,18 +1,46 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import React from "react";
+import { DocsThemeConfig } from "nextra-theme-docs";
+import { useRouter } from "next/router";
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
-  project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+  banner: {
+    key: "wip",
+    dismissible: false,
+    text: <p>🚧 Work in progress / Obra en construcción 🚧</p>,
   },
-  chat: {
-    link: 'https://discord.com',
+  sidebar: {
+    defaultMenuCollapseLevel: 0,
   },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  useNextSeoProps: () => {
+    const { asPath } = useRouter();
+    if (asPath !== "/") {
+      return {
+        titleTemplate: "%s – diego.do",
+      };
+    }
+    return {
+      titleTemplate: "diego.do",
+    };
+  },
+  head: (
+    <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:title" content="Learn diego.do" />
+      <meta property="og:description" content="Learn front-end development." />
+    </>
+  ),
+  logo: <span>Learn</span>,
   footer: {
-    text: 'Nextra Docs Template',
+    text: "diego.do",
   },
-}
+  i18n: [
+    { locale: "en", text: "English" },
+    { locale: "es", text: "Español" },
+  ],
+  project: {
+    link: "https://github.com/ramozdev/learn",
+  },
+  docsRepositoryBase: "https://github.com/ramozdev/learn",
+};
 
-export default config
+export default config;

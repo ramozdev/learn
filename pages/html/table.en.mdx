@@ -1,0 +1,156 @@
+# Table
+
+Use the `<table>{:html}` element to create a table. The `<table>{:html}` is a container for the table content.
+
+## Table Header
+
+`<thead>{:html}` is used to group the header content in a table. The `<thead>{:html}` must be the first element inside the `<table>{:html}`.
+
+```html copy
+<table>
+  <thead>
+    <tr>
+      <th>Header cell 1</th>
+      <th>Header cell 2</th>
+    </tr>
+  </thead>
+</table>
+```
+
+`<tr>{:html}` is used to create a table row and the `<th>{:html}` is used to create a table header cell.
+
+## Table Body
+
+`<tbody>{:html}` is used to group the body content in a table. The `<tbody>{:html}` must be the second element inside the `<table>{:html}`.
+
+```html copy
+<table>
+  <thead>
+    <tr>
+      <th>Header cell 1</th>
+      <th>Header cell 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Body cell 1</td>
+      <td>Body cell 2</td>
+    </tr>
+    <tr>
+      <td>Body cell 1</td>
+      <td>Body cell 2</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+`<td>{:html}` is used to create a table data cell.
+
+## Table Footer
+
+`<tfoot>{:html}` is used to group the footer content in a table. The `<tfoot>{:html}` must be the last element inside the `<table>{:html}` element.
+
+```html copy
+<table>
+  <thead>
+    <tr>
+      <th>Header cell 1</th>
+      <th>Header cell 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Body cell 1</td>
+      <td>Body cell 2</td>
+    </tr>
+    <tr>
+      <td>Body cell 1</td>
+      <td>Body cell 2</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Footer cell 1</td>
+      <td>Footer cell 2</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+## Table Caption
+
+`<caption>{:html}` is used to add a caption to a table. The `<caption>{:html}` must be the first element inside the `<table>{:html}`.
+
+```html copy
+<table>
+  <caption>
+    This table has a caption, a header, a body, and a footer.
+  </caption>
+  <thead>
+    <tr>
+      <th>Header cell 1</th>
+      <th>Header cell 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Body cell 1</td>
+      <td>Body cell 2</td>
+    </tr>
+    <tr>
+      <td>Body cell 1</td>
+      <td>Body cell 2</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Footer cell 1</td>
+      <td>Footer cell 2</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+## Example
+
+```html showLineNumbers filename="form.html" copy
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Example of HTML tables." />
+    <title>Table</title>
+  </head>
+  <body>
+    <table>
+      <!-- You have to use CSS to put the caption at the bottom -->
+      <caption>
+        This table has a caption, a header, a body, and a footer.
+      </caption>
+      <thead>
+        <tr>
+          <th>Header cell 1</th>
+          <th>Header cell 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Body cell 1</td>
+          <td>Body cell 2</td>
+        </tr>
+        <tr>
+          <td>Body cell 1</td>
+          <td>Body cell 2</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Footer cell 1</td>
+          <td>Footer cell 2</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
+```

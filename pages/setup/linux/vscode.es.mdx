@@ -1,0 +1,103 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Visual Studio Code
+
+Visual Studio Code (VSCode) es un editor de código que facilita la escritura de código.
+
+## Instalación
+
+Ve a [snapcraft.io/code](https://snapcraft.io/code) e instala VSCode.
+
+## Configuración
+
+Abre Visual Studio Code y presiona `ctrl + O` o haz clic en el botón `Abrir...` y abre tu directorio `web`.
+
+También puedes arrastrar y soltar una carpeta en la sección del editor de VSCode para abrirlo.
+
+Una vez que abras la carpeta, verás el nombre de tu carpeta en el panel superior izquierdo debajo de "Explorador".
+
+## Interfaz de Usuario
+
+En el lado izquierdo tienes la barra de actividad. Aquí es donde puedes acceder a las diferentes funciones de VSCode. Las funciones predeterminadas son:
+
+1. Explorador: ve todos los archivos y carpetas en el directorio de trabajo actual
+2. Buscar: buscar y reemplazar texto
+3. Control de fuente: ejecuta comandos de git usando una interfaz gráfica de usuario y ve el estado de su repositorio de git
+4. Ejecutar y depurar: ejecuta programas y depura problemas
+5. Extensiones: administrar extensiones
+
+6. Cuentas: Administre sus cuentas conectadas a VSCode
+7. Configuración: administrar la configuración de VSCode
+
+En la esquina superior derecha tienes botones para personalizar la interfaz de VSCode.
+
+Úsalo para esconder cosas cuando no las necesites. Por ejemplo, oculta el panel donde vive el terminal integrado para tener más espacio de pantalla vertical para escribir código.
+
+## Paleta de comandos
+
+Presiona `ctrl shift P` o `F1` para abrir la paleta de comandos. Aquí es donde puedes buscar comandos y ejecutarlos.
+
+## Terminal
+
+Presiona `` cmd ` `` para abrir la terminal integrada.
+
+## Intellisense
+
+Intellisense intenta predecir lo que va a escribir y muestra sugerencias a medida que escribe.
+
+## Archivo nuevo
+
+Busque `Crear: Nuevo archivo` en la paleta de comandos o use el cursor para presionar el icono de agregar archivo junto al nombre de la carpeta que ha abierto en la pestaña del explorador. Nombra el archivo `test.js`.
+
+También puede crear archivos en su sistema operativo y luego arrastrar y soltar el archivo en la sección del explorador (lado izquierdo) para agregar el archivo a la carpeta actual.
+
+Abra `test.js` y escriba `console.log("¡Hola mundo!"){:js}`. Notará que a medida que escribe esto, intellisense abre una ventana debajo del cursor con algunas sugerencias y, a medida que se acerca a la consola de palabras, las sugerencias se vuelven más precisas.
+
+Navegue por las sugerencias usando las teclas de flecha en su teclado o use su mouse para seleccionar una sugerencia.
+
+## Guardado automático
+
+Abre la paleta de comandos y escribe `configuración de la interfaz de usuario`, verás una opción que dice abrir `Preferencias: Abrir configuración (UI)`, presiona Enter o haz clic en ella.
+
+Una vez en la configuración, busca "guardado automático" y cambia la configuración "Archivos: Guardado automático" de "desactivado (predeterminado)" a "onWindowChange". Esto hará que todos los archivos se guarden automáticamente cuando se enfoque en otra ventana, como su navegador.
+
+Esto es solo una sugerencia personal. Siéntete libre de cambiar la configuración de la forma que desee.
+
+## Live Server
+
+Primero aprenderás HTML, así que para comenzar, abre la pestaña de extensiones en la barra de actividad.
+
+Busque la extensión [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) e instálela.
+
+Live server crea un servidor local que permite ver la salida del código que escribimos en el navegador.
+
+## Zoom
+
+Use `ctrl -` para alejar y `ctrl =` para acercar
+
+## Personalización
+
+Para cambiar el tema en VSCode, abre la paleta de comandos y busca `Preferencias: Tema de color`. Selecciona un tema y presiona enter.
+
+Uso el [Tema One Hunter](https://marketplace.visualstudio.com/items?itemName=RaillyHugo.one-hunter) que puede instalar desde la pestaña de extensiones.
+
+## Prueba
+
+Para probar que todo funciona, crea un nuevo archivo llamado `index.html` y pega el siguiente código en él.
+
+```html copy filename="index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola Mundo!</title>
+  </head>
+  <body>
+    Esto es una página web!
+  </body>
+</html>
+```
+
+Guarda el archivo y haz clic derecho sobre él para `Abrir con Live Server [Alt+L Alt+O]`. Debería abrirse una nueva pestaña en tu navegador en `http://127.0.0.1:5500/` o `http://localhost:5500/`.

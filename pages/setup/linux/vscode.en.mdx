@@ -1,0 +1,103 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Visual Studio Code
+
+Visual Studio Code (VSCode) is a code editor that makes writing code easier.
+
+## Installation
+
+Go to [snapcraft.io/code](https://snapcraft.io/code) and install VSCode.
+
+## Setup
+
+Open Visual Studio Code and press `ctrl + O` or click on the `Open...` button and open your `web` directory.
+
+You may also drag and drop it into the editor section of VSCode to open it.
+
+Once you open the directory/folder, you will see the name of your folder in the top left panel under "Explorer".
+
+## UI
+
+On the left side you have the activity bar. This is where you can access the different features of VSCode. The default features are:
+
+1. Explorer: See all the files and folders in the current working directory
+2. Search: Search and replace text
+3. Source control: Execute git commands using a graphical user interface and see the status of your git repository
+4. Run and Debug: Execute programs and debug problems
+5. Extensions: Manage extensions
+
+6. Accounts: Manage your accounts connected to VSCode
+7. Settings: Manage VSCode settings
+
+On the top right corner you have buttons to customize your layout.
+
+Use them to hide things when you don't need them. For example, hide the panel where the integrated terminal lives to have more vertical screen space to write code.
+
+## Command Pallete
+
+Press `ctrl shift P` or `F1` to open the command pallete. This is where you can search for commands and execute them.
+
+## Terminal
+
+Press `` cmd ` `` to open the integraded terminal.
+
+## Intellisense
+
+Intellisense tries to predict what you are going to write and displays suggestions as you type.
+
+## New file
+
+Search for `Create: New File` in the command pallete or use your cursor to press the add file icon next to the name of the folder you have opened in the explorer tab. Name the file `test.js`.
+
+You can also create files in your operating system then drag and drop the file into the explorer section (left side) to add the file to the current folder.
+
+Open `test.js` and type `console.log("Hello World!"){:js}`. You will notice that as you type this, the intellisense opens a window below the cursor with a few suggestions and as you get closer to the word console, the suggestions gets more accurrate.
+
+Navigate the suggestions using the arrow keys in your keyboard or use your mouse to select a suggestion.
+
+## Auto-Save
+
+Open the command pallete and type `settings UI`, you will see an option that says open `Preferences: Open Settings (UI)`, press enter or click on it.
+
+Once in the settings search for `auto save` and change the `Files: Auto Save` setting from `off (default)` to `onWindowChange`. This will cause all files to save automatically when you focus on another window, like your browser.
+
+This is just a personal, suggestion. Feel free to change the settings in any way you want.
+
+## Live Server
+
+You will learn HTML first, so to get started, open the extensions tab on the activity bar.
+
+Search for the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension and install it.
+
+Live server creates a local server that allows to see the output of the code we write in the brwoser.
+
+## Zoom
+
+Use `ctrl -` to zoom out and `ctrl =` to zoom in
+
+## Customizing
+
+To change the theme in VSCode open up the command pallete, and search for `Preferences: Color Theme`. Select a theme and press enter.
+
+I use the [One Hunter Theme](https://marketplace.visualstudio.com/items?itemName=RaillyHugo.one-hunter) which you can install from the extensions tab.
+
+## Test
+
+To test that everything is working create a new file called `index.html` and paste the following code into it.
+
+```html copy filename="index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    This is a website!
+  </body>
+</html>
+```
+
+Save the file and right click on it to `Open With Live Server [Alt+L Alt+O]`. A new tab should open in your browser on `http://127.0.0.1:5500/` or `http://localhost:5500/`.

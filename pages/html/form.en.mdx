@@ -1,0 +1,194 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Form
+
+When a website requires data from an user (e.g. a login form), the user needs to fill out a form. A form is a collection of input fields, checkboxes, radio buttons, etc. that the user can interact with.
+
+## Form elements
+
+The following elements are used to create forms:
+
+- `<form>{:html}`: Contains all the form elements.
+- `<input>{:html}`: An input field which can be a text field, a checkbox, a radio, etc.
+- `<label>{:html}`: A label for an input field. It is used to describe the input field.
+- `<button>{:html}`: Used to submit the form or other custom behavior.
+- `<select>{:html}`: A dropdown menu. It contains a list of options.
+- `<option>{:html}`: An option inside a `<select>{:html}` element.
+- `<textarea>{:html}`: Multi-line text input field.
+
+## Input types
+
+The following input types are available:
+
+- `text`: A single-line text input field.
+- `checkbox`: A checkbox.
+- `radio`: A radio button.
+- `color`: A color picker.
+- `date`: A date picker.
+- `datetime-local`: A date and time picker.
+- `email`: An email input field.
+- `file`: A file input field.
+- `hidden`: A hidden input field, not visible to the user.
+- `image`: A graphical submit button. (Not recommended).
+- `month`: A month picker.
+- `number`: A number input field.
+- `password`: A password input field.
+- `range`: A slider. It is used to select a value from a range.
+- `reset`: A reset button. (Not recommended).
+- `search`: A search input field.
+- `tel`: A phone number input field.
+- `time`: A time picker.
+- `url`: A URL input field.
+- `week`: A week picker.
+- `submit`: A submit button.
+
+To set an input type, use the `type` attribute on the `<input>{:html}` element:
+
+```html copy
+<input type="text" name="firstName" />
+```
+
+Notice we also added a `name` attribute to the `<input>{:html}` element. This is used to identify the input field when the form is submitted. Use camelCase notation for the `name` attribute, e.g. `firstName`.
+
+<Callout type="warning" emoji="⚠️">
+  Always include a `name` attribute on your <code>&lt;input&gt;</code> elements. Otherwise, such
+  input fields will not be included in the form data.
+</Callout>
+
+Lastly, add an `id` to the `<input>{:html}` and set the `for` attribute of the `<label>{:html}` element to that same value:
+
+```html copy
+<label for="firstName">First Name</label>
+
+<input type="text" id="firstName" name="firstName" />
+```
+
+In this case, the `for` attribute of the `<label>{:html}` element is set to `firstName` because the `<input>{:html}` has an `id` of `firstName`. When the user clicks on the label, the input field will be focused.
+
+## Example
+
+If we wanted to create a simple form with first name and last name input fields, we would do the following:
+
+```html filename="person.html" copy
+<form>
+  <label for="firstName">First Name</label>
+  <input type="text" name="firstName" id="firstName" />
+
+  <label for="lastName">Last Name</label>
+  <input type="text" name="lastName" id="lastName" />
+
+  <button type="submit">Submit</button>
+</form>
+```
+
+You can test the form by using the `<form>{:html}`'s default behavior. Render `person.html` in your browser, fill the form and submit it. You will see the data from the form in the URL:
+
+```
+http://localhost:3000/form.html?firstName=John&lastName=Doe
+```
+
+## Form example
+
+The following example shows a form with all the available input types:
+
+```html showLineNumbers filename="form.html" copy
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Example with all the HTML inputs." />
+    <title>Form</title>
+  </head>
+
+  <body>
+    <form style="display: grid; gap: 20px">
+      <div>
+        <input type="checkbox" name="agree" id="agree" />
+        <label for="agree">I agree to the terms and conditions</label>
+      </div>
+
+      <label for="favColor">Favorite Color</label>
+      <input type="color" name="favColor" id="favColor" />
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob" id="dob" />
+
+      <label for="someEvent">When something happened</label>
+      <input type="datetime-local" name="someEvent" id="someEvent" />
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+
+      <label for="file">File</label>
+      <input type="file" name="file" id="file" />
+
+      <!-- Warning: Any user can see this data using DevTools -->
+      <input type="hidden" name="hidden" id="hidden" value="tz4a98xxat96iws9zmbrgj3a" />
+
+      <!-- Graphical submit button. Not recommended -->
+      <!-- <input type="image" /> -->
+
+      <label for="month">Month</label>
+      <input type="month" name="month" id="month" />
+
+      <label for="number">Number</label>
+      <input type="number" name="number" id="number" />
+
+      <label id="password">Password</label>
+      <input type="password" name="password" id="password" />
+
+      <fieldset>
+        <legend>Select your favorite drink:</legend>
+
+        <input type="radio" id="water" name="drink" value="water" checked />
+        <label for="water">Water</label>
+        <br />
+        <input type="radio" id="lemonade" name="drink" value="lemonade" />
+        <label for="lemonade">Lemonade</label>
+        <br />
+        <input type="radio" id="wine" name="drink" value="wine" />
+        <label for="wine">Wine</label>
+      </fieldset>
+
+      <label for="hungerLevel">How hungry are you?</label>
+      <input type="range" name="hungerLevel" id="hungerLevel" />
+
+      <!-- Reset all input fields in the form. Not recommended -->
+      <!-- <input type="reset" /> -->
+
+      <label for="search">Search</label>
+      <input type="search" name="search" id="search" />
+
+      <label for="phoneNumber">Phone Number</label>
+      <input type="tel" name="phoneNumber" id="phoneNumber" />
+
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="time">Time</label>
+      <input type="time" name="time" id="time" />
+
+      <label for="url">URL</label>
+      <input type="url" name="url" id="url" />
+
+      <label for="week">Week</label>
+      <input type="week" name="week" id="week" />
+
+      <label for="bestColorEver">Choose the best color:</label>
+      <select name="bestColorEver" id="bestColorEver">
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+      </select>
+
+      <label for="comment">Write a comment:</label>
+      <textarea id="comment" name="comment" rows="5" cols="33"></textarea>
+
+      <button type="submit">Submit</button>
+
+      <input type="submit" value="Save for later" />
+    </form>
+  </body>
+</html>
+```

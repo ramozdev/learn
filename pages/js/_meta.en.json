@@ -1,0 +1,15 @@
+{
+  "basics": "Basics",
+  "conditional": "Conditional Statement",
+  "loop": "Loop",
+  "function": "Function",
+  "operator": "Operator",
+  "array": "Array",
+  "object": "Object",
+  "date": "Date",
+  "set": "Set",
+  "error": "Error",
+  "async": "Async, Await",
+  "built-in": "Built In",
+  "advanced": "Advanced"
+}

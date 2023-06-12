@@ -1,0 +1,395 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Basics
+
+## Variables
+
+A variable is a symbolic name for a value stored in memory. We declare variables in two ways.
+
+- `let{:js}`: Declares a block-scoped, local variable, optionally initializing it to a value.
+- `const{:js}`: Declares a block-scoped, read-only named constant.
+
+<Callout type="info" emoji="ℹ️">
+  Always use `const{:js}` to declare a variable unless you need to change its value after declaring it.
+</Callout>
+
+<Callout type="error" emoji="️🚫">
+  You can also declare variables using the `var` keyword, but this is no longer used because it
+  makes the code more prone to error.
+</Callout>
+
+Let's declare a local variable named `age` and assign it a value of `22{:js}`.
+
+```js copy
+let age = 22
+```
+
+Now declare a read-only named constant named `color` and assign it a value of `'pink'{:js}`.
+
+```js copy
+const color = 'pink'
+```
+
+The text we use to name a variable is called `identifier`, and such identifiers follow a naming criteria
+
+- Allowed characters include letters uppercase `A` to `Z`, lowercase `a` to `z` and numbers `0` to `9`.
+- Must start with a letter, underscore (\_), or dollar sign ($)
+- Cannot contain space or hyphen (-)
+
+Here are some **invalid** identifiers:
+
+- `3size`: Cannot start with number
+- `first-name`: Cannot contain dash (-)
+- `last name`: Cannot contain spaces
+
+Here are some **valid** identifiers:
+
+- `size`
+- `firstName`
+- `lastName`
+- `fabric268`
+- `myBeautifulDarkTwistedFantasy`
+- `$results`
+- `_email`
+
+### Notes
+
+1. JavaScript is a case-sensitive language, thus identifiers are case-sensitive. Meaning `age` and `agE` are different identifiers.
+
+2. Identifiers should use [camelCase notation](https://wikipedia.org/wiki/Camel_case) by convention.
+
+To comply with this convention:
+
+- Make the first letter lowercase
+- Separate words by capitalizing the first letter of each word
+
+Incorrect examples:
+
+- `MyPencil`: first letter is not lowercase. Should be `myPencil`.
+- `theGreenapple`: Did not capitalize the first letter for `apple`. Should be `theGreenApple`.
+
+Correct examples:
+
+- `myBike`
+- `finalResult`
+- `time`
+
+## Primitive data types
+
+Any value we assign to a variable belongs to a data type. We can assign the following data types to a variable:
+
+### String
+
+A `string` is a sequence of characters enclosed in single quotes `''{:js}` or double quotes `""{:js}`.
+
+```js copy
+const name = 'Pablo'
+```
+
+`'Pablo'{:js}` is a string which contains the characters `'P'{:js}`, `'a'{:js}`, `'b'{:js}`, `'l'{:js}`, `'o'{:js}`.
+
+You can merge strings using addition `+{:js}`. This is known as string concatenation.
+
+```js copy
+const firstName = 'Pablo'
+const lastName = 'Picasso'
+
+// Merge names and add a space in the middle
+const fullName = firstName + ' ' + lastName
+
+console.log(fullName + ' painted this.') // logs 'Pablo Picasso painted this.'
+```
+
+### Number
+
+A `number` is a numeric data type. Here just a few examples of numbers:
+
+```js copy
+let zero = 0
+let height = 2.49
+let negativeScore = -22
+let life = 42
+```
+
+We will explore numbers in more detail because numbers are a complex subject. If you need more information [check out MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates) for a full reference of the numbers that can be used in JavaScript.
+
+### Boolean
+
+A `boolean` is a logical data type that can only be `true{:js}` or `false{:js}`.
+
+```js copy
+let isActive = false
+let isDead = true
+```
+
+### Undefined
+
+If you declare a variable using `let{:js}` and do not assign it a value, JavaScript will assign it a value of `undefined{:js}`.
+
+```js copy
+let size
+
+console.log(size) // logs 'undefined'
+```
+
+It can also be explicitly assigned.
+
+```js copy
+const middleName = undefined
+let name = undefined
+```
+
+### Null
+
+`null{:js}` indicates no value or the absence of a value.
+
+```js copy
+const favColor = null
+```
+
+## Template literals (Template strings)
+
+Template literals, also known as template strings are enclosed in backticks (`) and can be used to create strings, the same way it works with single-quotes or double quotes. However, with template literals you can also create multi-line strings and perform string interpolation.
+
+```js copy
+console.log(`simple string`) // logs 'simple string'
+
+console.log(`multi-line
+            string`)
+// logs multi-line string
+
+// String interpolation
+const physicist = 'Newton'
+console.log(`Isaac ${physicist} is dead.`)
+// logs 'Isaac Newton is dead.'
+```
+
+String interpolation allows you to pass in a value to a string. It can be used in the place of string concatenation.
+
+```js copy
+const vehicle = 'bike'
+
+const stringConcatenation = 'A ' + vehicle + ' has ' + 2 + ' wheels.'
+const stringInterpolation = `A ${vehicle} has ${2} wheels.`
+
+console.log(stringConcatenation) // logs 'A bike has 2 wheels.'
+console.log(stringInterpolation) // logs 'A bike has 2 wheels.'
+```
+
+To interpolate a string enclose it in backticks (\`), and inject JavaScript in any part of the string within curly braces, preceeded by a dollar sign `${}`.
+
+```js copy
+const myVariable = 22
+const anotherVariable = 'Hello world!'
+const lorem = `some string ${myVariable} more strings ${anotherVariable} text.`
+console.log(lorem) // 'some string 22 more strings Hello world! text.'
+
+const speed = 30
+const example = `LOREM ${
+  speed > 100 ? `You are going really fast` : `You are not going fast`
+} IPSUM.`
+console.log(example) // "LOREM You are not going fast IPSUM."
+```
+
+String interpolation is **extensibly** used in front-end development.
+
+## Reference data types
+
+### Arrays
+
+An array object stores an ordered list of values enclosed in square brackets `[]{:js}`, separated by a comma `,`. Each value in the array is an `element`.
+
+```js copy
+const numbers = [2, 1, 3, 5]
+```
+
+The `numbers` array has 4 elements, `2{:js}`, `1{:js}`, `3{:js}` and `5{:js}`.
+
+Elements in an array are referenced by their position in the array. Arrays in JavaScript are zero-indexed, meaning one starts counting from `0{:js}` from the left most item.
+
+```js copy
+//       Index:    0         1        2       3
+const fruits = ['apple', 'banana', 'pear', 'kiwi']
+
+console.log(fruits[0]) // logs 'apple'
+```
+
+The element `'apple'{:js}` is in the first position of this `fruits` array, thus `'apple'{:js}` it has an index of `0{:js}`.
+
+We can also modify an array's elements. Here we update the second element of the `measurements` array from `3.14{:js}` to `2.22{:js}`.
+
+```js copy
+//            Index:    0     1     2
+const measurements = [1.12, 3.14, 2.98]
+
+measurements[1] = 2.22
+
+//                          Index:   0     1     2
+console.log(measurements) // logs [1.12, 2.22, 2.98]
+```
+
+Arrays are resizable, meaning we can append elements to an array. Here we add a fourth element `'José'{:js}`, to the `names` array.
+
+```js copy
+//     Index:    0       1       2
+const names = ['Juan', 'John', 'Jeff']
+
+names[3] = 'José'
+
+//                  Index:    0       1       2       3
+console.log(names) // logs ['Juan', 'John', 'Jeff', 'José']
+```
+
+The elements in an array can be a primitive data type, arrays and objects.
+
+```js copy
+const random = [null, 'water', 3.14, undefined, false, ['a', 'b'], { name: 'George' }]
+
+console.log(random[0]) // logs null
+console.log(random[2]) // logs 3.14
+console.log(random[5]) // logs ['a', 'b']
+console.log(random[6]) // logs { name: 'George' }
+```
+
+Notice we can use multiple data types in the same array. JavaScript does not limit an array to be only numbers `[1, 2, 3]{:js}` or only strings `['a', 'b', 'c']{:js}`, etc.
+
+Arrays are **extensibly** used. We will have an entire section to study arrays in more detail.
+
+### Objects
+
+An object is a collection of key-value pairs. Keys are unique strings and values can be any JavaScript data type.
+
+```js copy
+const vehicle = {
+  wheels: 4,
+  brand: 'Toyota',
+  owner: null
+}
+```
+
+In the `vehicle` object, the key `brand` has a value of `'Toyota'{:js}` and the key `wheels` has a value of `4{:js}`.
+
+We use the object's keys to read its values. This can be done using the dot notation or the bracket notation.
+
+We can use the bracket notation to pass in a variable which contains the key we want to read.
+
+```js copy
+const post = {
+  title: 'Happiness is peace in motion',
+  author: 'Naval',
+  likes: 91239123,
+  tags: ['happiness', 'peace']
+}
+
+// Dot notation
+console.log(post.author) // logs 'Naval'
+
+// Bracket notation
+console.log(post['likes']) // logs 91239123
+
+const keyToRead = 'tags'
+console.log(post[keyToRead]) // logs ['happiness', 'peace']
+```
+
+An object key can have an object or array as its value. To read nested values we can use the dot notation or bracket and chain the keys we want to read as we go deeper into the nested object.
+
+```js copy
+const guy = {
+  name: 'Carlos',
+  age: 22,
+  isBald: true,
+  interests: ['Computers', 'Logic', 'Mathematics'],
+  address: {
+    street: '256 Flower St.',
+    province: 'New Oak',
+    zip: undefined
+  }
+}
+
+// ---- Nested Object ----
+// Dot notation
+console.log(guy.address.province) // logs New Oak
+
+// Bracket notation
+console.log(guy['address']['province']) // logs New Oak
+
+// Combine dot notation and bracket notation
+console.log(guy.address['province']) // logs New Oak
+console.log(guy['address'].province) // logs New Oak
+
+// ---- Array ----
+// Dot notation
+console.log(guy.interests[0]) // logs 'Computers'
+// Bracket notation
+console.log(guy['interests'][1]) // logs 'Logic'
+```
+
+You can add, update and delete object properties.
+
+```js copy
+const phone = {
+  brand: 'Apple',
+  storage: 128
+}
+
+// add a property
+phone.color = 'black'
+console.log(phone) /* logs
+{ 
+  brand: 'Apple',
+  storage: 128,
+  color: 'black'
+}
+*/
+
+// modify a property
+phone.color = 'red'
+console.log(phone) /* logs
+{
+  brand: 'Apple',
+  storage: 128,
+  color: 'red'
+}
+*/
+
+// delete a property
+delete phone.color
+console.log(phone) /* logs
+{
+  brand: 'Apple',
+  storage: 128
+}
+*/
+```
+
+## Misc.
+
+### Comments
+
+A comment is some text added by the developer that has no effect over the code. Usually developers use comments to explain how a section of the code works.
+
+To write single-line comments on use double slash `//`
+
+```js copy
+// Single-line comments
+console.log('Hello World!') // Another single-line comment.
+```
+
+Notice that for single-line comments you can use the whole line or add it at the end of a line of code.
+
+To write multi-line comments use slash-pound `/*` to open the comment and pound-slash `*/` to close the comment.
+
+```js copy
+/*
+Multi-line
+comment
+*/
+```
+
+### Single Quotes vs. Double Quotes
+
+JavaScript interprets single quotes `''` and double quotes `""` in the same way. You can use whichever you prefer.
+
+### Semi-colon
+
+The use of semi-colon `;` at the end of each statement is optional, thanks to [Automatic Semicolon Insertion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion).

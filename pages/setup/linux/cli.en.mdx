@@ -1,0 +1,113 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Terminal / Command Line Interface (CLI)
+
+The terminal is a text-based interface to the operating system. We use the terminal in front-end development to install software, create files, run local servers to preview our websites, amongst other things.
+
+## Start
+
+Press `Ctrl + Alt + T` to open a terminal window. Or you can search for `terminal` in the search bar.
+
+## Commands
+
+A window will open with a prompt similar to this:
+
+```bash
+username@machine ~ %
+```
+
+The first goal is to create a directory called `web`, where the code for all your projects will be stored.
+
+First, run the `pwd` command to know the path of our current working directory. In other words, we want to know what "folder" the terminal is currently at.
+
+Type `pwd` and press enter.
+
+```bash copy
+pwd
+```
+
+Expect a path of the form `/home/username`. This is the path to your home directory.
+
+Now we use the `ls` command to see the content of the current directory.
+
+```bash copy
+ls
+```
+
+Expect a list of directories and files:
+
+```
+Downloads   Music       Desktop       Pictures
+Documents   Movies      Public        web
+```
+
+Create a new directory called `web` using the `mkdir` command where we are going to store the code for all of our projects.
+
+```bash copy
+mkdir web
+```
+
+<Callout type="warning" emoji="⚠️">
+  By convention, files and folders should be named using only lowercase characters and replacing all
+  spaces with a hyphen/dash `-`, unless there is a requirement to do otherwise.
+</Callout>
+
+Execute `ls` again, to confirm that the `web` directory was created.
+
+```bash
+$ ls
+Downloads   Music       Desktop       Pictures
+Documents   Movies      Public        web
+```
+
+Navigate to `web` using the change directory `cd` command.
+
+```bash copy
+cd web
+```
+
+To ensure you moved correctly, check the path to the current directory again, using `pwd`.
+
+```bash copy
+pwd
+```
+
+You should get a path of the form:
+
+```
+/home/username/web
+```
+
+To go back, you must use the `..` syntax which indicates the parent directory of the current working directory. For example, `cd ..` will take you to `/home/username`
+
+```bash copy
+cd ..
+```
+
+```bash
+pwd
+/home/username
+```
+
+<Callout type="warning" emoji="⚠️">
+  If you ever get an error executing a command in the terminal, check that you spelled everything
+  correctly, **including spaces**. `cd..` is a different command from `cd ..`. The former will throw
+  an error because it does not include a space after the `cd` command.
+</Callout>
+
+## Manual
+
+To see all the options available for a command, preceed the command by `man` and press enter, for example, `man ls` will show the manual for the `ls` command.
+
+Press `q` to exit the manual.
+
+## Command Line Cheat Sheet
+
+| command | description                                                            |
+| ------- | ---------------------------------------------------------------------- |
+| cd      | change directory to navigate the file system                           |
+| cd ~    | change directory to the home directory                                 |
+| pwd     | return working directory path                                          |
+| ls      | list current directory's contents                                      |
+| ls -la  | list directory contents including hidden files `-a`, in list view `-l` |
+| mkdir   | create a directory                                                     |

@@ -1,0 +1,13 @@
+{
+  "basics": "Basics",
+  "tailwind": "TailwindCSS",
+  "border": "Border",
+  "color": "Color",
+  "flex": "Flex",
+  "grid": "Grid",
+  "gradient": "Gradient",
+  "spacing": "Spacing",
+  "typography": "Typography",
+  "shadow": "Shadow",
+  "z-index": "Z-index"
+}

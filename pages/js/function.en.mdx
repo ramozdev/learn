@@ -1,0 +1,264 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Function
+
+A function encapsulates statements that produce a specific output based on the data you pass it. You can think of it as a box with two wholes. You put a piece of paper with some text on the left hole (input) and get a new piece of paper from the right hole (output).
+
+## Function declarations
+
+To declare a function we use the following syntax
+
+```js copy
+function addOne(number) {
+  return number + 1
+}
+```
+
+The keyword `function{:js}` defines a function.
+
+A function has the following parts:
+
+- name: An arbitrary name we provide to the function
+- parameters: A list of `inputs` used to execute the function. Parameters are enclosed in parenthesis `()` and separated by comma `,`. A function can have zero or more parameters
+- statements: Define what the function does and are enclosed in curly braces `{}`
+
+The `addOne(){:js}` function has one parameter `number` and one statement which adds `1{:js}` to `number`.
+
+To call a function you write the function name followed by parenthesis.
+
+```js copy
+function sayHi() {
+  return 'Hi!'
+}
+
+// declare `message` and assign it the
+// value returned by the function `sayHi()`
+const message = sayHi()
+
+console.log(message) // 'Hi!'
+
+// You may also call a function directly
+// inside another function
+console.log(sayHi()) // 'Hi!'
+```
+
+If the function has parameter, you pass them inside the parenthesis in the order set by the function definition.
+
+```js copy
+function raiseToPower(base, power) {
+  return base ** power // `base` raised to the power of `power`
+}
+
+const result1 = raiseToPower(2, 3) // 2 * 2 * 2
+const result2 = raiseToPower(3, 2) // 3 * 3
+
+console.log(result1) // 8
+console.log(result2) // 9
+```
+
+The `return{:js}` statement ends the function execution and defines the output of the function. It is not required, but most functions include at least one return statement.
+
+## Function parameters
+
+### Default parameter
+
+If you call a function and do not pass a parameter, it will be set to `undefined{:js}`.
+
+```js copy
+function takeOne(number) {
+  if (number === undefined) {
+    return 'You must provide a number.'
+  }
+  return number - 1
+}
+
+const badCall = takeOne()
+
+console.log(badCall) // 'You must provide a number.'
+
+const goodCall = takeOne(5)
+
+console.log(goodCall) // 4
+```
+
+You can set a default value for a parameter to avoid dealing with `undefined{:js}` values.
+
+```js copy
+function takeOne(number = 1) {
+  return number - 1
+}
+
+const badCall = takeOne()
+
+console.log(badCall) // 0
+
+const goodCall = takeOne(5)
+
+console.log(goodCall) // 4
+```
+
+### Rest parameters
+
+You can create functions that accept an undetermined amount of parameters using the spread syntax (`...`).
+
+The rest of the parameters becomes an array of parameters inside the function.
+
+```js copy
+function addCurrencySign(currencySign, ...prices) {
+  return prices.map((price) => `${currencySign}${price}`)
+}
+
+const result = addCurrencySign('$', 4.99, 3.19, 1.99)
+
+console.log(result) // [ '$4.99', '$3.19', '$1.99' ]
+```
+
+The `addCurrencySign(){:js}` function received four parameters `currencySign = '$'{:js}` and `prices = [4.99, 3.19, 1.99]{:js}`. Notice we did not pass in the prices as an array to the function. JavaScript took every parameter after the `currencySign` and pushed it into a new array we called `prices`.
+
+## Scope (Closure)
+
+Variables defined inside a function cannot be accessed outside the function. However, variables defined outside the function can be accessed inside the function.
+
+```js copy
+//`globalScope` is declared in the global scope.
+const globalScope = 'OUTSIDE myFunction()'
+
+// `myFunction` is declared in the global scope.
+function myFunction() {
+  let functionScope = 'INSIDE myFunction()'
+  // `globalScope` can be accessed here.
+  console.log(globalScope)
+  console.log(functionScope)
+}
+
+myFunction()
+// 'OUTSIDE myFunction()'
+// 'INSIDE myFunction()'
+
+// `functionScope` cannot be accessed here.
+```
+
+A nested function can also access variables and parameters defined in its parent function.
+
+```js copy
+function aFunc(param) {
+  const aFuncScope = 'INSIDE aFunc()'
+
+  function bFunc() {
+    const bFuncScope = 'INSIDE bFunc()'
+
+    // `aFuncScope` can be accessed here
+    console.log(aFuncScope)
+    console.log(param)
+    console.log(bFuncScope)
+  }
+
+  bFunc()
+
+  // bFuncScope cannot be accessed here
+}
+
+aFunc('PARAMETER FROM aFunc()')
+// 'INSIDE aFunc()'
+// 'PARAMETER FROM aFunc()'
+// 'INSIDE bFunc()'
+```
+
+If you pass an object or array as a parameter to a function and modify an object's property or an array's element, the change will be applied outside the function.
+
+```js copy
+function problemSolver(person) {
+  person.hasProblem = false
+}
+
+const person = {
+  name: 'Olivia',
+  hasProblem: true
+}
+
+console.log(person) // { name: 'Olivia', hasProblem: true }
+
+problemSolver(person)
+
+console.log(person) // { name: 'Olivia', hasProblem: false }
+```
+
+The same behavior applies to arrays.
+
+```js copy
+function onlyQuaters(coins) {
+  coins[1] = 25
+}
+
+const coins = [25, 10, 25]
+
+console.log(coins) // [25, 10, 25]
+
+onlyQuaters(coins)
+
+console.log(coins) // [25, 25, 25]
+```
+
+## Arrow functions
+
+You can write functions with less characters using arrow functions
+
+### Normal function syntax
+
+```js copy
+const fruits = ['banana', 'apple', 'orange']
+
+function getSecondElement(array) {
+  return array[1]
+}
+
+const secondElement = getSecondElement(fruits)
+
+console.log(secondElement) // 'apple'
+```
+
+### Arrow function syntax
+
+```js copy
+const fruits = ['banana', 'apple', 'orange']
+
+const getThirdElement = (array) => array[2]
+
+const thirdElement = getThirdElement(fruits)
+
+console.log(thirdElement) // 'orange'
+```
+
+Arrow functions are used extensibly to create callback functions
+
+```js copy
+const awards = ['EMMY', 'OSCAR', 'GRAMMY']
+
+const lowercaseAwards = awards.map((award) => award.toLowerCase())
+
+console.log(lowercaseAwards) // ['emmy', 'oscar', 'grammy']
+```
+
+## Recursion
+
+A recursive function is a function that calls itself.
+
+<Callout type="error" emoji="️🚫">
+  You will most likely create infinite loops when creating recursive functions. Infinite loops are a
+  fatal error in your code.
+</Callout>
+
+```js copy
+function countUpToFive(number) {
+  console.log(number)
+
+  const nextNumber = number + 1
+
+  if (nextNumber <= 5) {
+    // Recursively call `countUpToFive()`
+    countUpToFive(nextNumber)
+  }
+}
+
+countUpToFive(1) // 1, 2, 3, 4, 5
+```

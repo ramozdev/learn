@@ -1,0 +1,71 @@
+# Form
+
+## \<button\>
+
+Interactive element activated by the user. Once pressed, the button performs an action, such as submit a form or execute JavaScript function.
+
+```html copy
+<button>Press me!</button>
+```
+
+## \<form\>
+
+Used to create an HTML form for user input.
+
+```html copy
+<form action="" method="get">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required />
+  </div>
+  <div>
+    <label for="email">email</label>
+    <input type="email" name="email" id="email" required />
+  </div>
+  <button type="submit">Sign up</button>
+</form>
+```
+
+## \<input\>
+
+Used to accept data from an user.
+
+```html copy
+<label for="email">Email</label>
+
+<input type="email" id="email" name="email" required />
+```
+
+## \<label\>
+
+Used to caption an `<input/>{:html}` element.
+
+```html copy
+<label for="email">Email</label>
+
+<input type="email" id="email" name="email" required />
+```
+
+## \<select\>
+
+Used to create a drop-down list.
+
+```html copy
+<label for="marital-status">Marital Status</label>
+
+<select name="marital-status" id="marital-status">
+  <option value="single">Single</option>
+  <option value="married">Married</option>
+  <option value="divorced">Divorced</option>
+  <option value="widowed">Widowed</option>
+</select>
+```
+
+## \<textarea\>
+
+Used to create a multi-line text input control.
+
+```html copy
+<label for="message">Message</label>
+<textarea name="message" id="message" cols="30" rows="10"></textarea>
+```

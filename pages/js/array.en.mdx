@@ -1,0 +1,489 @@
+# Array
+
+An array an object in JavaScript. This object has properties and methods.
+
+## Properties
+
+### length
+
+If we want to know the length of an array we call its `length` property.
+
+```js copy
+const cities = ['Tokyo', 'São Paulo', 'Santo Domingo']
+
+console.log(cities.length) // 3
+```
+
+## Methods
+
+### at
+
+To get the last element of an array, pass in `-1{:js}` to the `.at(){:js}` method.
+
+```js copy
+const colors = ['blue', 'red', 'green']
+
+console.log(colors.at(-1)) // 'green'
+```
+
+### every
+
+Check if every element in an array meets a condition.
+
+```js copy
+const numbers = [22, 33, 44, 55, 66]
+
+// Check if every number in `numbers` is less than 70.
+console.log(numbers.every((number) => number < 70)) // true
+```
+
+### fill
+
+Replaces elements in an array with a provided value. If a range is not provided all elements will be replaced.
+
+```js copy
+const integers = [9, 8, 7, 6, 5]
+
+const filledWithNull = integers.fill(null)
+const filledWithOnes = integers.fill(1, 2)
+const filledWithZeroes = integers.fill(0, 1, 3)
+
+console.log(filledWithNull) // [null, null, null, null, null]
+console.log(filledWithOnes) // [9, 8, 1, 1, 1]
+console.log(filledWithZeroes) // [9, 0, 0, 0, 5]
+```
+
+### filter
+
+Remove all elements from an array for which a condition evaluates to false.
+
+```js copy
+const data = [
+  { name: 'Roberto', age: 25 },
+  { name: 'Maria', age: 17 }
+]
+
+const oldEnough = data.filter((person) => person.age >= 18)
+
+console.log(oldEnough) // [{name: 'Roberto', age: 25}]
+```
+
+### find
+
+Find the first element in an array that meets a condition.
+
+```js copy
+const statesOfMatter = ['solid', 'liquid', 'gas', 'plasma']
+
+const result = statesOfMatter.find((element) => element.length === 5)
+
+console.log(result) // 'solid'
+```
+
+### findIndex
+
+Get the index of the first element in an array that meets a condition.
+
+```js copy
+const albums = ['Vida', 'Muerte', 'Apa y Can']
+
+let result = albums.findIndex((album) => album.startsWith('Apa'))
+
+console.log(result) // 2
+
+result = albums.findIndex((album) => album === 'Guía Para La Acción')
+
+console.log(result) // -1
+```
+
+### findLast
+
+Find the last element in an array that meets a condition.
+
+```js copy
+const letters = ['a', 'bb', 'ccc', 'ddd', 'ee', 'f']
+
+const result = letters.findLast((element) => element.length === 3)
+
+console.log(result) // 'ddd'
+```
+
+### findLastIndex
+
+Get the index of the last element in an array that meets a condition.
+
+```js copy
+const availability = [
+  ['sun', true],
+  ['mon', false],
+  ['tue', false],
+  ['thu', true]
+]
+
+const result = availability.findLastIndex((element) => element[1] === false)
+
+console.log(result) // 2
+```
+
+### flat
+
+```js copy
+const scores = [3, 12, [5, 7, [4, 1]], 9]
+
+let result = scores.flat()
+
+console.log(result) // [3, 12, 5, 7, [4, 1], 9]
+
+result = scores.flat()
+
+console.log(result) // [3, 12, 5, 7, 4, 1, 9]
+```
+
+### flatMap
+
+```js copy
+const scores = [
+  ['Jennifer', 0],
+  ['James', 50],
+  ['Sarah', 450]
+]
+
+const result = scores.flatMap(([player, score]) => [player.toUpperCase(), `${score} points`])
+
+console.log(result)
+// ['JENNIFER', '0 points', 'JAMES', '50 points', 'SARAH', '450 points']
+```
+
+Here we use destructuring assignment
+
+### forEach
+
+Execute statements for each element in array without modifying the original array.
+
+```js copy
+const animals = ['dogs', 'cats', 'cows']
+
+const facts = []
+
+animals.forEach((animal) => {
+  console.log(`${animal} are mamals`)
+  facts.push(`${animal} are mamals`)
+}) /* 
+'dogs are mamals'
+'cats are mamals'
+'cows are mamals'
+*/
+
+console.log(facts)
+// ['dogs are mamals', 'cats are mamals', 'cows are mamals']
+```
+
+### from
+
+Create an array from an Iterable object or another array.
+
+```js copy
+const arrayFromString = Array.from('abc')
+console.log(arrayFromString) // ['a', 'b', 'c']
+
+// Using a mapping function
+const mappedArray = Array.from([1, 2, 3], (x) => x + x)
+console.log(mappedArray) // [2, 4, 6]
+
+// Sets
+const mySet = new Set(['abc', 'abc', 'xyz', 'xyz', 'foo'])
+const arrayFromMySet = Array.from(mySet)
+console.log(arrayFromMySet) // [ 'abc', 'xyz', 'foo' ]
+
+// Maps
+const hashTable = new Map([
+  [4, 'a'],
+  [5, 'b'],
+  [6, 'c']
+])
+const entries = Array.from(hashTable)
+console.log(entries) // [[4, 'a'], [5, 'b'], [6, 'c']]
+
+// `values` is an iterable object, not an array
+const values = hashTable.values()
+const hashTableValues = Array.from(values)
+console.log(hashTableValues) // ['a', 'b', 'c']
+
+// `keys` is an iterable object, not an array
+const keys = hashTable.keys()
+const hashTableKeys = Array.from(keys)
+console.log(hashTableKeys) // [4, 5, 6]
+```
+
+### includes
+
+Check if an array contains a value.
+
+```js copy
+const groceries = ['coconuts', 'rice', 'beans']
+
+const didYouBuyBeans = groceries.includes('beans')
+
+console.log(didYouBuyBeans) // true
+```
+
+### indexOf
+
+Get the index of the first element in an array that is equal to a certain value.
+
+```js copy
+const week = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+
+const indexOfMonday = week.indexOf('mon')
+
+console.log(indexOfMonday) // 1
+```
+
+### isArray
+
+Determine if a JavaScript value is an array.
+
+```js copy
+// all following calls return true
+Array.isArray([])
+Array.isArray([1])
+Array.isArray(new Array())
+Array.isArray(new Array('a', 'b', 'c'))
+Array.isArray(new Array(33))
+
+// all following calls return false
+Array.isArray(25)
+Array.isArray('Array')
+```
+
+### join
+
+Convert the elements in array into a comma separated string or an arbitrary string separator.
+
+```js copy
+const path = ['user', 123, 'settings']
+
+const commaSeparated = path.join()
+const noSeparation = path.join('')
+const slashSeparated = path.join('/')
+
+console.log(commaSeparated) // 'user,123,settings'
+console.log(noSeparation) // 'user123settings'
+console.log(slashSeparated) // 'user/123/settings'
+```
+
+### lastIndexOf
+
+Get the index of the last element in an array that is equal to a certain value.
+
+```js copy
+const items = ['keyboard', 'mouse', 'mouse', 'monitor']
+
+const result = items.lastIndexOf('mouse')
+
+console.log(result) // 2
+```
+
+### map
+
+The `.map(){:js}` method return a new array where a function is applied to all elements.
+
+```js copy
+const lastNames = ['nietzsche', 'duarte', 'amarante']
+
+const newArr = arr.map((lastName) => lastName.toUpperCase())
+
+console.log(newArr) // ['NIETZSCHE', 'DUARTE', 'AMARANTE']
+```
+
+### pop
+
+Removes the last element of an array.
+
+```js copy
+const shoppingList = ['eggs', 'rice']
+
+shoppingList.pop()
+
+console.log(shoppingList) // ['eggs']
+```
+
+### push
+
+Adds one or more elements to the end of an array and returns the new length of the array.
+
+```js copy
+const shoppingList = ['eggs', 'rice']
+
+shoppingList.push('milk')
+
+console.log(shoppingList) // ['eggs', 'rice', 'milk']
+```
+
+```js copy
+const shoppingList = ['eggs', 'rice']
+
+shoppingList.push('milk', 'beans', 'flour')
+
+console.log(shoppingList)
+// ['eggs', 'rice', 'milk', 'beans', 'flour']
+```
+
+### reduce
+
+```js copy
+const numbers = [1, 2, 3, 4]
+
+// 0 + 1 + 2 + 3 + 4
+const initialValue = 0
+const sumWithInitial = array1.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  initialValue
+)
+
+console.log(sumWithInitial) // 10
+```
+
+### reduceRight
+
+```js copy
+const letters = ['a', 'b', 'c', 'd']
+
+const sumWithInitial = array1.reduceRight((accumulator, currentValue) => accumulator + currentValue)
+
+console.log(sumWithInitial) // 'dcba'
+```
+
+### reverse
+
+Inverts the order of an array and returns it as a new element.
+
+```js copy
+const ordered = ['first', 'second', 'third']
+
+let reversed = ordered.reverse()
+
+console.log(reversed) // ['third', 'second', 'first']
+```
+
+### shift
+
+Removes the first element from an array and returns it.
+
+```js copy
+const rights = ['Speech', 'Life', 'Association']
+
+const firstRight = rights.shift()
+
+console.log(rights) // ['Life', 'Association']
+console.log(firstRight) // 'Speech'
+```
+
+### slice
+
+Returns a portion of the array as a new array.
+
+The portion is selected from start to end (end not included) referenced by index.
+
+```js copy
+const organs = ['liver', 'lung', 'heart', 'brain']
+
+const firstSlice = organs.slice(1)
+const secondSlice = organs.slice(1, 2)
+const thirdSlice = organs.slice(-1)
+const fourthSlice = organs.slice(1, 3)
+
+console.log(firstSlice) // ['lung', 'heart', 'brain']
+console.log(secondSlice) // ['lung']
+console.log(thirdSlice) // ['brain']
+console.log(fourthSlice) // ['lung', 'heart']
+console.log(organs) // ['liver', 'lung', 'heart', 'brain']
+```
+
+### some
+
+Returns `true{:js}` if at least one element in the array meets a condition, otherwise, returns `false{:js}`.
+
+```js copy
+const yourFeelings = ['Lust', 'Love']
+
+const areYouSinning = yourFeelings.some((feeling) => feeling === 'Lust')
+
+console.log(areYouSinning) // true
+```
+
+### sort
+
+Sort an array following a criteria. If no criteria is provided, strings are ordered alphabetically.
+
+```js copy
+const wordsILike = ['cash', 'lavish', 'charcuterie', 'assets']
+wordsILike.sort()
+console.log(wordsILike)
+// ['assets', 'cash', 'charcuterie', 'lavish']
+
+const numbers = [44, 789, 19999, 1080, 5]
+numbers.sort()
+console.log(numbers)
+// [1080, 19999, 44, 5, 789]
+```
+
+### splice
+
+```js copy
+const priorities = ['health', 'fame']
+
+let output = priorities.splice(2, 0, 'family')
+
+console.log(priorities) // ['health', 'fame', 'family']
+console.log(output) // []
+
+output = priorities.splice(1, 1)
+
+console.log(priorities) // ['health', 'family']
+console.log(output) // ['fame']
+```
+
+### unshift
+
+Adds one or more elements to the beginning of an array and returns the new length of the array.
+
+```js copy
+const rights = ['Life', 'Association']
+
+const rightsNewLength = rights.unshift('Speech')
+
+console.log(rights) // ['Speech', 'Life', 'Association']
+console.log(rightsNewLength) // 3
+```
+
+```js copy
+const rights = ['Life', 'Association']
+
+const rightsNewLength = rights.unshift('Speech', 'Privacy')
+
+console.log(rights)
+// ['Speech', 'Privacy', 'Life', 'Association']
+console.log(rightsNewLength) // 4
+```
+
+## Misc.
+
+### Higher Order Arrays
+
+```js copy
+// 2D array
+const arr = [
+  ['a', 1],
+  ['b', 2]
+]
+
+console.log(arr[0][0]) // 'a'
+console.log(arr[0][1]) // 1
+console.log(arr[1][0]) // 'b'
+console.log(arr[1][1]) // 2
+```
+
+### Reference
+
+For a full list of array method see the [MDN page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).

@@ -1,0 +1,13 @@
+{
+  "index": "Introducción",
+  "setup": "Configuración de La Computadora",
+  "html": "HTML",
+  "css": "CSS",
+  "js": "JavaScript",
+  "about": {
+    "title": "Sobre mi",
+    "type": "page",
+    "href": "https://diego.do",
+    "newWindow": true
+  }
+}

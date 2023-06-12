@@ -1,0 +1,60 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Node.js
+
+Node.js is a back-end JavaScript runtime environment that executes JavaScript code outside a web browser.
+
+## Check Your Node.js Version
+
+Open a terminal and execute the following command to see the Node.js version installed in your computer:
+
+```bash
+node -v
+```
+
+If you do not have Node.js installed, you will see an error message similar to the following:
+
+```bash
+zsh: command not found: node
+```
+
+If you have Node.js installed, you will see the version number, for example:
+
+```bash
+v18.14.0
+```
+
+You should have the LTS version of Node.js installed. If you have a different version, you can download the LTS version from [nodejs.org/en/download](https://nodejs.org/en/download/).
+
+## Installation
+
+Go to [nodejs.org/en/download](https://nodejs.org/en/download/) and download the Node.js installer for MacOS.
+
+Run the installer and follow the installation guide.
+
+<Callout type="warning" emoji="⚠️">
+  You must allow the installer access to your file system (Downloads) directory because the
+  installer will download additional data to complete the installation.
+</Callout>
+
+If you denied access to you file system go to `settings > privacy and security > files and Folders` and allow the installer, then run the installer again.
+
+## Verify Installation
+
+Execute the following command to see the Node.js version installed in your computer:
+
+```bash
+node -v
+```
+
+When you install Node.js, it also installs the Node Package Manager (npm). You can verify that npm is installed by running the following command:
+
+```bash
+npm -v
+```
+
+If you have npm installed, you will see the version number, for example:
+
+```bash
+9.2.0
+```

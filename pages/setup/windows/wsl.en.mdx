@@ -1,0 +1,73 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Windows Linux Subsystem
+
+Windows works differently from MacOS and Linux when it comes to command line interfaces. As a front-end developer it is easier to use linux based command line interfaces and for this purpose you can use the Windows Linux Subsystem (WSL).
+
+## Installation
+
+Press `Windows + r`, type `cmd` and press enter to open the Windows command prompt.
+
+Type and execute the following command to install the WSL with the Ubuntu Linux distribution
+
+```bash
+wsl --install -d Ubuntu
+```
+
+Once finished, restart your computer.
+
+<Callout type="warning" emoji="⚠️">
+  Make sure to grant permission for the script when you see popup windows to authorize.
+</Callout>
+
+Open VSCode and install the [WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).
+
+Open the command pallete `Ctrl + Shift + P` and select `Developer: Reload Window` to reload VSCode.
+
+Open the command pallete again and select `WSL: New WSL Window`. This will open a new VSCode window in a new context. When you press `Ctrl + J` to open the panel, you will see that the terminal is now a Linux terminal.
+
+## Setup
+
+Setup you Linux user and password. You can use the same credentials as your Windows user.
+
+## Update
+
+To update your Linux distribution, open the terminal and type the following command:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+## Install Node.js using nvm
+
+To install Node.js, we will use [nvm]() which is a Node.js version manager. This will allow you to install multiple versions of Node.js and switch between them.
+
+Open the terminal and type the following commands:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+```
+
+<Callout type="warning" emoji="⚠️">
+  Make sure to grant permission for the script when you see popup windows to authorize.
+</Callout>
+
+```bash
+nvm install node
+```
+
+## Install Git
+
+First, check if Git is already installed by typing the following command:
+
+```bash
+git --version
+```
+
+If you get an error, you need to install Git. Type the following command to install Git:
+
+```bash
+sudo apt install git
+```
+
+Now you are ready to use VSCode on Windows with a Linux terminal.

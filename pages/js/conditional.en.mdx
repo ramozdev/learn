@@ -1,0 +1,308 @@
+# Conditional Statement
+
+Conditional statement allow you to only execute code when a condition is met.
+
+## if...else
+
+The `if{:js}` statement check if a condition is true. If it is, it executes the statements provided.
+
+The `else{:js}` statement can be used after an if statement to execute a statement when the check fails.
+
+```js
+if (condition) {
+  statement1
+} else {
+  statement2
+}
+```
+
+A common use for `if` statements is to provide permission or access to something.
+
+We will divide a set of men in two groups. Those who are at least 18 years old and those who are not, to know who can go to war.
+
+Here's an example on how it could be done with an `if` statement:
+
+```js copy
+let age = 18
+
+if (age >= 18) {
+  // This message is logged when age is
+  // greater than or equal to 18
+  console.log('Congrats, you can go to war!')
+}
+```
+
+If the `age` is 17 or less, nothing will be logged in the console.
+
+We can modify the example to use `else{:js}`, and add another message.
+
+```js copy
+let age = 18
+
+if (age >= 18) {
+  console.log('Congrats, you can go to war!')
+} else {
+  // This message is logged when `age` is NOT
+  // greater than or equal to 18
+  console.log('You are not old enough to go to war.')
+}
+```
+
+Now when the `age` is 17 or less, we will receive `'You are not old enough to go to war.'{:js}` in the console.
+
+## else if
+
+We also have the option to chain if statements. Here's the syntax:
+
+```js
+if (condition1) {
+  statement1
+} else if (condition2) {
+  statement2
+} else if (conditionN) {
+  statementN
+} else {
+  statementLast
+}
+```
+
+In the following example
+
+```js copy
+let age = 18
+
+// Check fails
+if (age >= 21) {
+  console.log('You are at least 21 years old!')
+} else if (age >= 18) {
+  // This message is logged
+  console.log('Congrats, you can go to war!')
+} else {
+  console.log('You are not old enough to go to war.')
+}
+```
+
+## swtich
+
+```js
+switch (expression) {
+  case value1:
+    // Statements executed when the
+    // result of expression matches value1
+    [break]
+  case value2:
+    // Statements executed when the
+    // result of expression matches value2
+    [break]
+  ...
+  case valueN:
+    // Statements executed when the
+    // result of expression matches valueN
+    [break]
+  [default:
+    // Statements executed when none of
+    // the values match the value of the expression
+    [break]]
+}
+```
+
+```js copy
+const light = 'red'
+
+switch (light) {
+  case 'red':
+    console.log('Red means stop.')
+    break
+  case 'yellow':
+    console.log(`Yellow means it will turn red, shortly.`)
+    break
+  case 'green':
+    console.log('Green means go.')
+    break
+  default:
+    console.log(`Enter 'red', 'green' or 'yellow'.`)
+}
+```
+
+### Fall-Through
+
+If you don't use break statements and the expression matches other cases, such cases will execute their expressions.
+
+```js copy
+const dish = 'Garlic butter steak'
+
+switch (dish) {
+  case 'Garlic butter steak':
+  case 'Krusty Krab pizza':
+  case `Mom's spaghetti`:
+    console.log('Delicioso!')
+    break
+  case 'Bacon':
+  default:
+    console.log('Yuck!')
+}
+```
+
+```js copy
+const choice = 1
+let message = ''
+
+switch (choice) {
+  case 1:
+    message += 'You '
+  case 2:
+    message += 'Never '
+  case 3:
+    message += 'Visit '
+    message += 'Me'
+  case 4:
+    message += '!'
+    console.log(message)
+    break
+  case 5:
+    message += 'foo!'
+    console.log(message)
+    break
+  default:
+    console.log('Pick an integer from 1 to 5!')
+}
+```
+
+```js copy
+switch (true) {
+  case hasFourlegs()
+
+  case isCat():
+
+    break
+}
+```
+
+```js copy
+const wheels = 1
+
+function isCar(wheels) {
+  return wheels === 4
+}
+function isWeird(wheels) {
+  return wheels === 3
+}
+function isBike(wheels) {
+  return wheels === 2
+}
+
+switch (true) {
+  case isCar(wheels):
+    console.log('Your vehicle maybe a car.')
+    break
+  case isWeird(wheels):
+    console.log('Your vehicle is weird.')
+    break
+  case isBike(wheels):
+    console.log('Your vehicle maybe a bicycle.')
+  case wheels === 2:
+    console.log('Your vehicle maybe a motorcycle.')
+    break
+  case wheels === 1:
+    console.log('Your vehicle maybe a monocycle.')
+    break
+  default:
+    console.log('Enter the number of wheels from 1 to 4.')
+}
+```
+
+### default between case clauses
+
+```js copy
+const feeling = 'anger'
+switch (feeling) {
+  case 'peace':
+    console.log(`You're at peace!`)
+    break
+  default:
+    console.log('Something is disturbing your peace.')
+  // fall-through
+  case 'anger':
+    console.log('Anger is disturbing your peace. Take a walk.')
+}
+```
+
+The previous code does the following:
+
+1. Check if `feeling` is equal to `'peace'`. Check fails.
+2. The default statements get executed. `'Something is disturbing your peace.'` gets logged in the console.
+3. Check if `feeling` is equal to `'anger'`. Check passes and statements get executed. `'Anger is disturbing your peace. Take a walk.'` get logged in the console.
+
+## try...catch...finally
+
+```js
+try {
+  tryStatements
+} catch (exceptionVar) {
+  catchStatements
+} finally {
+  finallyStatements
+}
+```
+
+```js copy
+function addOne(number) {
+  if (number === undefined) {
+    throw 'You did not provide a number'
+  }
+
+  return number + 1
+}
+
+try {
+  const newNumber = addOne(1)
+  // Will reach this statement
+  console.log(newNumber) // 2
+} catch (err) {
+  // Will not reach this statement
+  console.error(err)
+}
+
+// Will throw
+try {
+  const newNumber = addOne()
+  // Will not reach this statement
+  console.log(newNumber)
+} catch (err) {
+  // Will reach this statement
+  console.error(err) // 'You did not provide a number'
+}
+```
+
+```js copy
+function giveMeAnError(errorType) {
+  switch (errorType) {
+    case 'type':
+      throw TypeError('oops, wrong type.')
+    case 'range':
+      throw RangeError('oops, out of range.')
+    default:
+      throw Error('oops, something went wrong.')
+  }
+}
+
+try {
+  giveMeAnError('')
+} catch (err) {
+  if (err instanceof TypeError) {
+    console.log('TYPE ERROR')
+  } else if (err instanceof RangeError) {
+    console.log('RANGE ERROR')
+  } else {
+    const { message, name, fileName, lineNumber, columnNumber, stack } = err
+    console.log({
+      message,
+      name,
+      fileName,
+      lineNumber,
+      columnNumber,
+      stack
+    })
+  }
+}
+```

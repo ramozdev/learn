@@ -1,0 +1,114 @@
+# Async
+
+JavaScript allows asynchronous code execution.
+
+## Promise
+
+Represents the completion or failure of an asynchronous operation and its resulting values.
+
+A promise can be.
+
+- pending
+- fullfiled
+- rejected
+
+```js copy
+const myPromise = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve('The promise resolved to this string.')
+  }, 3000)
+})
+
+console.log(myPromise) // Promise { <pending> }
+console.log(`You must wait 3 seconds.`)
+
+myPromise.then((value) => {
+  console.log(value)
+  // 'The promise resolved to this string.'
+})
+```
+
+## Promise.all()
+
+`Promise.all(){:js}` takes in an array of promises. It resolves when all promises resolve or rejects when the first promise rejects.
+
+```js copy
+const promise1 = new Promise((resolve) => {
+  setTimeout(resolve, 500, 0.5) // half a second
+})
+const promise2 = new Promise((resolve) => {
+  setTimeout(resolve, 1000, 1) // 1 second
+})
+const promise3 = new Promise((resolve) => {
+  setTimeout(resolve, 2000, 2) // 2 seconds
+})
+
+// Will wait until the last promise resolves
+// It will take 2 seconds to log output
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values) // [0.5, 1, 2]
+})
+```
+
+If your function requires all promises to resolve in order to proceed, use `Promise.all(){:js}`. Otherwise, your function would wait unnecessarily for all promises to reject or resolve.
+
+## async function (await)
+
+You create `async` functions to handle promises with a better syntax.
+
+You can use the `await` keyword inside an `async` function to wait for a promise's result. It prevents you from having to use the `.then(){:js}`/`.catch(){:js}` syntax which can become cumbersome for any non-trivial function.
+
+```js copy
+function makeUserWaitXSeconds(miliseconds) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Thank you for waiting ${miliseconds / 1000} seconds.`)
+    }, miliseconds)
+  })
+}
+
+async function myAsyncFunction() {
+  console.log('Please wait.')
+  const result = await makeUserWaitXSeconds(2000)
+  console.log(result) // 'Thank you for waiting 2 seconds.'
+}
+
+myAsyncFunction()
+```
+
+The previous example is missing a key part. If you call an async function which does not include a `try...catch{:js}` block or the function call itself is not wraped in a `try...catch{:js}` block, and the function rejects. You would get an `Uncaught Exception` error.
+
+This error entails that the developer did not forsee or was careless about a potential failure in the code.
+
+Let's fix the example:
+
+```js copy
+function makeUserWaitXSeconds(miliseconds) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Thank you for waiting ${miliseconds / 1000} seconds.`)
+    }, miliseconds)
+  })
+}
+
+async function myAsyncFunction() {
+  console.log('Please wait.')
+  try {
+    const result = await makeUserWaitXSeconds(2000)
+    console.log(result)
+    // 'Thank you for waiting 2 seconds.'
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+myAsyncFunction()
+
+// You may also catch errors outside
+// the async function
+// try {
+//   myAsyncFunction()
+// } catch (error) {
+//   console.error(error)
+// }
+```

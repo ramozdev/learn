@@ -1,0 +1,109 @@
+# Object
+
+## entries
+
+Use `Object.entries(){:js}` to get an object's key-value pairs as a 2D array.
+
+```js copy
+const song = {
+  title: 'Ayayai',
+  album: 'Tamale',
+  by: 'Daniela Andrade',
+  year: 2019
+}
+
+const entries = Object.entries(song)
+
+console.log(entries)
+/* 
+[ 
+    [ 'title', 'Ayayai' ],
+    [ 'album', 'Tamale' ],
+    [ 'by', 'Daniela Andrade' ],
+    [ 'year', 2019 ]
+] 
+*/
+console.log(entries[0]) // [ 'title', 'Ayayai' ]
+console.log(entries[2][1]) // Daniela Andrade
+```
+
+## fromEntries
+
+Use `Object.fromEntries(){:js}` to create a new object from a 2D array where each element is a two element array containing the key and the value that will be applied to the object `[ ['key', 'value'] ]{:js}`.
+
+```js copy
+const entries = [
+  ['title', 'The Almanack of Naval Ravikant'],
+  ['author', 'Eric Jorgenson'],
+  ['stars', 4.7],
+  ['year', 2020],
+  ['tags', ['wealth', 'happiness']]
+]
+
+const book = Object.fromEntries(entries)
+
+console.log(book)
+/*
+{   
+    title: 'The Almanack of Naval Ravikant',
+    author: 'Eric Jorgenson',
+    stars: 4.7,
+    year: 2020,
+    tags: [ 'wealth', 'happiness' ]
+}
+*/
+console.log(book.title)
+// 'The Almanack of Naval Ravikant'
+console.log(book.stars) // 4.7
+```
+
+## keys
+
+Use `Object.keys(){:js}` to get an object's keys in an array.
+
+```js copy
+const address = {
+  street: '74 Photosynthesis St.',
+  city: 'Bloomington',
+  region: 'Evergreen',
+  zipCode: 37583,
+  country: 'Forestland'
+}
+
+const keys = Object.keys(address)
+
+console.log(keys)
+// [ 'street', 'city', 'region', 'zipCode', 'country' ]
+console.log(keys[1]) // 'city'
+```
+
+## values
+
+Use `Object.values(){:js}` to get an object's values in an array.
+
+```js copy
+const album = {
+  title: 'Vida',
+  by: 'Canserbero',
+  year: 2010,
+  meta: {
+    features: ['Lil Supa'],
+    producer: 'Kpú'
+  }
+}
+
+const values = Object.values(album)
+
+console.log(values)
+/*
+[
+    'Vida',
+    'Canserbero',
+    2010,
+    { features: [ 'Lil Supa' ], producer: 'Kpú' }
+]
+*/
+console.log(values[1]) // 'Canserbero'
+```
+
+Remember an object's value can be another object.

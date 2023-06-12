@@ -1,0 +1,13 @@
+{
+  "index": "Introduction",
+  "setup": "Computer Setup",
+  "html": "HTML",
+  "css": "CSS",
+  "js": "JavaScript",
+  "about": {
+    "title": "About",
+    "type": "page",
+    "href": "https://diego.do",
+    "newWindow": true
+  }
+}
